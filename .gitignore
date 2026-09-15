@@ -1,0 +1,12 @@
+.env
+.env.*
+!.env.example
+.next/
+out/
+node_modules/
+*.db
+*.sqlite
+*.sqlite3
+.DS_Store
+Thumbs.db
+.vscode/

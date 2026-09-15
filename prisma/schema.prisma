@@ -1,0 +1,288 @@
+// ============================================================
+// VEIL — Database Schema
+// The Brotherhood of Light
+//
+// STAGE 3 NOTE: This schema intentionally creates ONLY the
+// infrastructure required to hold the first real membership
+// record (BOL-1385). The remaining 2,981 historical members are
+// NOT fabricated here. Fields that have no assigned value for a
+// member remain NULL rather than invented.
+//
+// The datasource is SQLite for the local starter stage. The
+// production target is PostgreSQL — switching requires only
+// changing the provider and connection details (no model changes).
+// The connection URL / adapter move to prisma.config.ts and the
+// PrismaClient constructor (Prisma 7 pattern).
+// ============================================================
+
+generator client {
+  provider = "prisma-client"
+  output   = "../lib/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+/// A real membership record in the historical registry.
+/// Member IDs are historical Brotherhood numbers (BOL-1 … BOL-2982).
+model Member {
+  id              String   @id @default(cuid())
+  /// Historical membership number, e.g. BOL-1385. Do not renumber.
+  memberId        String   @unique
+  firstName       String
+  middleName      String?
+  lastName        String
+  /// Full ceremonial name as it appears in the registry.
+  fullName        String
+  /// LIFE MEMBER | MEMBER | ... (registry classification)
+  membershipType  String
+  /// ACTIVE | RESTRICTED | ARCHIVED (registry status)
+  status          String
+  /// Organizational role, e.g. MEMBER. Never an administrative seat by default.
+  role            String
+  /// Country of record.
+  country         String
+  /// The Country Initiator who brought the member behind the veil.
+  countryInitiator String?
+
+  // --- Recorded membership journey (historical chronology) ---
+  /// Year the initiation journey began. NOT the full-membership date.
+  journeyStartedYear   Int?
+  /// Year the member was formally approved for full membership.
+  formalApprovalYear   Int?
+  /// Year the member entered the official registry as a full member.
+  fullMembershipYear   Int?
+
+  // --- Fields that remain NULL until genuinely assigned ---
+  initiationDate  DateTime?
+  prefecture      String?
+  directorate     String?
+  minervalAssembly String?
+  cell            String?
+  insinuatorName  String?
+  email           String?
+  phone           String?
+  address         String?
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  // --- Brotherhood Chamber (communication platform) ---
+  /// Lightweight activity signal for presence indicators.
+  /// Set by the communication API when a member is active; used
+  /// solely for "present in the last few minutes" markers.
+  lastActiveAt        DateTime?
+
+  authAccounts        AuthAccount[]
+  conversationCreate  Conversation[]        @relation("ConversationsCreated")
+  conversationMembers ConversationMember[]  @relation("ConversationMemberships")
+  sentMessages        Message[]             @relation("SentMessages")
+  messageReads        MessageRead[]         @relation("MemberMessageReads")
+  notifications       Notification[]        @relation("MemberNotifications")
+  conversationAudits  ConversationAudit[]   @relation("ConversationAuditActor")
+  messageReports      MessageReport[]       @relation("ReportedByMember")
+}
+
+/// Authentication credential bound to a membership identity.
+/// Passwords are stored ONLY as argon2 hashes — never plaintext.
+model AuthAccount {
+  id           String   @id @default(cuid())
+  memberId     String   @unique
+  /// Login identifier: the historical member ID (or a registered email when one exists).
+  username     String   @unique
+  passwordHash String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  member       Member   @relation(fields: [memberId], references: [memberId])
+}
+
+// ============================================================
+// THE BROTHERHOOD CHAMBER — Communication Foundation
+// Database-backed messaging for the Brotherhood.
+// No conversation, message, or membership is fabricated at
+// creation time; everything is authored by real authenticated
+// members through the server API.
+//
+// Conversation types (string values enforced by the API):
+//   PRIVATE     — member-to-member
+//   BROTHERHOOD — general Brotherhood group
+//   ASSEMBLY    — conversation bound to a Brotherhood Assembly
+//   OFFICIAL    — authorized Brotherhood announcements
+//   RESTRICTED  — access-controlled conversation
+//
+// Conversation status: ACTIVE | ARCHIVED
+// Conversation roles:  OWNER | ADMIN | MEMBER
+// Message status:      NORMAL | MODERATED | REMOVED
+// ============================================================
+
+/// A communication channel between members. Groups do not
+/// represent organizational authority — they are conversation
+/// scopes only. Organization-bound groups (ASSEMBLY) are created
+/// only when a genuine assembly record exists elsewhere.
+model Conversation {
+  id          String   @id @default(cuid())
+  type        String
+  title       String
+  description String?
+  status      String   @default("ACTIVE")
+  /// The authenticated member who created the conversation.
+  createdBy   String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  createdByMember Member               @relation("ConversationsCreated", fields: [createdBy], references: [memberId])
+  members         ConversationMember[]
+  messages        Message[]
+  auditLogs       ConversationAudit[]
+
+  @@index([createdBy])
+}
+
+/// Membership of a member in a conversation. The source of truth
+/// for access control: a member may only read and send where this
+/// row exists and is not removed.
+model ConversationMember {
+  id             String    @id @default(cuid())
+  conversationId String
+  memberId       String
+  /// OWNER | ADMIN | MEMBER — conversation-management roles only.
+  role           String    @default("MEMBER")
+  joinedAt       DateTime  @default(now())
+  /// Marked when the member last read this conversation.
+  lastReadAt     DateTime?
+  mutedAt        DateTime?
+  /// Soft removal: the member has left or was restricted. Kept for
+  /// audit integrity; access is denied while true.
+  isRemoved      Boolean   @default(false)
+
+  conversation Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  member       Member       @relation("ConversationMemberships", fields: [memberId], references: [memberId])
+
+  @@unique([conversationId, memberId])
+  @@index([memberId])
+}
+
+/// A single message within a conversation. senderId is always the
+/// authenticated member resolved server-side from the session —
+/// never from a client request.
+model Message {
+  id                String    @id @default(cuid())
+  conversationId    String
+  senderId          String
+  body              String
+  /// TEXT | SYSTEM (reserved for future structured messages)
+  type              String    @default("TEXT")
+  /// NORMAL | MODERATED | REMOVED — moderated messages are
+  /// withheld from ordinary readers by the API.
+  status            String    @default("NORMAL")
+  replyToMessageId  String?
+  deletedAt         DateTime?
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+
+  conversation Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  sender       Member       @relation("SentMessages", fields: [senderId], references: [memberId])
+  replyTo      Message?     @relation("MessageReplies", fields: [replyToMessageId], references: [id])
+  replies      Message[]    @relation("MessageReplies")
+  reads        MessageRead[]
+  attachments  MessageAttachment[]
+  reports      MessageReport[]
+
+  @@index([conversationId, createdAt, id])
+  @@index([senderId])
+  @@index([replyToMessageId])
+}
+
+/// Read receipts: one row per (message, member) once the member
+/// has read the message. Unreads for a member are messages sent by
+/// others that lack a row here.
+model MessageRead {
+  id        String   @id @default(cuid())
+  messageId String
+  memberId  String
+  readAt    DateTime @default(now())
+
+  message Message @relation(fields: [messageId], references: [id], onDelete: Cascade)
+  member  Member  @relation("MemberMessageReads", fields: [memberId], references: [memberId])
+
+  @@unique([messageId, memberId])
+  @@index([memberId])
+}
+
+/// Attachment extension point. Intentionally no unrestricted
+/// upload endpoint yet: messages may only reference attachments
+/// created by a (future) validated upload pipeline. Storage keys
+/// point into a private store; never into public content.
+model MessageAttachment {
+  id         String @id @default(cuid())
+  messageId  String
+  fileName   String
+  mimeType   String
+  sizeBytes  Int
+  storageKey String @unique
+
+  message Message @relation(fields: [messageId], references: [id], onDelete: Cascade)
+
+  @@index([messageId])
+}
+
+/// Per-member notification for communication events. Unread counts
+/// are derived from message state; this table carries the
+/// presentation layer (what to show for each event).
+model Notification {
+  id             String    @id @default(cuid())
+  memberId       String
+  /// NEW_PRIVATE_MESSAGE | NEW_GROUP_MESSAGE | OFFICIAL_MESSAGE |
+  /// MENTION_REPLY
+  type           String
+  body           String
+  conversationId String?
+  messageId      String?
+  readAt         DateTime?
+  createdAt      DateTime  @default(now())
+
+  member Member @relation("MemberNotifications", fields: [memberId], references: [memberId])
+
+  @@index([memberId, readAt])
+}
+
+/// Moderation audit record for significant communication events.
+/// Deliberately NOT every keystroke — only creation, membership
+/// changes, reports, moderation, and archival.
+model ConversationAudit {
+  id             String   @id @default(cuid())
+  conversationId String
+  actorMemberId  String
+  /// CONVERSATION_CREATED | MEMBER_ADDED | MEMBER_REMOVED |
+  /// MESSAGE_REPORTED | MESSAGE_MODERATED | CONVERSATION_ARCHIVED
+  event          String
+  detail         String?
+  createdAt      DateTime @default(now())
+
+  conversation Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  actor        Member       @relation("ConversationAuditActor", fields: [actorMemberId], references: [memberId])
+
+  @@index([conversationId])
+  @@index([actorMemberId])
+}
+
+/// A member-reported message awaiting moderation review.
+model MessageReport {
+  id                 String    @id @default(cuid())
+  messageId          String
+  reportedByMemberId String
+  reason             String
+  /// OPEN | RESOLVED | DISMISSED
+  status             String    @default("OPEN")
+  createdAt          DateTime  @default(now())
+  resolvedAt         DateTime?
+
+  message    Message @relation(fields: [messageId], references: [id], onDelete: Cascade)
+  reportedBy Member  @relation("ReportedByMember", fields: [reportedByMemberId], references: [memberId])
+
+  @@index([messageId])
+  @@index([status])
+  @@index([reportedByMemberId])
+}
