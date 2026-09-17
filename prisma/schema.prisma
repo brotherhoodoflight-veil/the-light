@@ -43,6 +43,13 @@ model Member {
   role            String
   /// Country of record.
   country         String
+  nationality     String?
+  sex             String?
+  cityOfResidence String?
+  idCardType      String?
+  idCardNumber    String?
+  maritalStatus   String?
+  occupation      String?
   /// The Country Initiator who brought the member behind the veil.
   countryInitiator String?
 
@@ -82,6 +89,12 @@ model Member {
   notifications       Notification[]        @relation("MemberNotifications")
   conversationAudits  ConversationAudit[]   @relation("ConversationAuditActor")
   messageReports      MessageReport[]       @relation("ReportedByMember")
+
+  // --- The Assemblies (convocations and records) ---
+  assemblySeats         AssemblyMember[]    @relation("AssemblyMemberships")
+  attendanceRecords     AssemblyAttendance[] @relation("AssemblyAttendanceRecords")
+  presidingAssemblies   Assembly[]          @relation("AssemblyPresidingOfficers")
+  issuingAssemblies     Assembly[]          @relation("AssemblyIssuingOfficers")
 }
 
 /// Authentication credential bound to a membership identity.
@@ -285,4 +298,155 @@ model MessageReport {
   @@index([messageId])
   @@index([status])
   @@index([reportedByMemberId])
+}
+
+// ============================================================
+// THE ASSEMBLIES — Convocations and Records
+// The register of the Assemblies of the Brotherhood of Light.
+//
+// INTEGRITY RULE: no Assembly, seat, attendance, record, or
+// document is fabricated at creation time. Rows exist only for
+// genuine, authorized convocations entered by an authorized
+// officer through the server. Until such a record exists, the
+// Assemblies module presents an honest empty register.
+//
+// Classifications (string values enforced by the service):
+//   THE OPEN ASSEMBLY · THE INNER ASSEMBLY · THE SILENT ASSEMBLY
+//   THE WATCHER'S ASSEMBLY · THE ASSEMBLY OF LIGHT · THE LAST ASSEMBLY
+//
+// Lifecycle statuses (Assembly statuses, NOT member ranks):
+//   CALLED → ANNOUNCED → GATHERED → OPENED → IN SESSION →
+//   CLOSED → SEALED → ARCHIVED
+//
+// Access levels (access controls, NOT ranks):
+//   BROTHERHOOD | COUNTRY | INVITED | RESTRICTED | INNER
+// ============================================================
+
+/// A formal Assembly of the Brotherhood. Records are entered only
+/// for genuine, authorized convocations.
+model Assembly {
+  id               String   @id @default(cuid())
+  /// Official register identity, e.g. BOL-AS-0007. Assigned only
+  /// when a genuine record is entered; never invented.
+  assemblyNumber   String?  @unique
+  title            String
+  /// One of the six classifications.
+  classification   String
+  /// The declared purpose of the summons.
+  purpose          String
+  /// Lifecycle status: CALLED … ARCHIVED.
+  status           String   @default("CALLED")
+  /// Access level governing who may see and answer the call.
+  accessLevel      String   @default("BROTHERHOOD")
+  /// Country of record for COUNTRY assemblies.
+  country          String?
+  /// The place where the assembly convenes (the chamber).
+  location         String?
+  /// The hour of gathering, when formally declared (e.g. "11:00").
+  hourOfDay        String?
+  /// The date and time of the summons / gathering.
+  convenedAt       DateTime
+  /// The Brother presiding over the assembly.
+  presidingMemberId String?
+  /// The Brother under whose authority the summons was issued.
+  issuedByMemberId String?
+  /// Ceremonial declaration, e.g. "UNDER THE WITNESS OF THE GREAT
+  /// AMAL HAMZAAD" — used only where a record genuinely declares it.
+  witnessDeclamation String?
+  /// Optional link to an existing ASSEMBLY-type discussion chamber in
+  /// the Brotherhood messaging platform. Plain reference — the
+  /// messaging platform remains the owner of that conversation.
+  discussionConversationId String?
+  /// The member who entered this record (server-authorized).
+  createdByMemberId String?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  presidingMember Member? @relation("AssemblyPresidingOfficers", fields: [presidingMemberId], references: [memberId])
+  issuingMember   Member? @relation("AssemblyIssuingOfficers", fields: [issuedByMemberId], references: [memberId])
+
+  seats      AssemblyMember[]
+  attendance AssemblyAttendance[]
+  records    AssemblyRecord[]
+  documents  AssemblyDocument[]
+
+  @@index([status])
+  @@index([accessLevel])
+  @@index([convenedAt])
+}
+
+/// A member's place in an assembly. The source of truth for who may
+/// see restricted chambers and who must answer the call.
+model AssemblyMember {
+  id           String   @id @default(cuid())
+  assemblyId   String
+  memberId     String
+  /// INVITED — the call has been issued to this member.
+  /// SEATED   — the member has been granted a seat (authorized).
+  seat         String   @default("INVITED")
+  /// PENDING | WILL_ATTEND | CANNOT_ATTEND — reply to the summons.
+  response     String   @default("PENDING")
+  respondedAt  DateTime?
+  /// When the seat was granted, if it was.
+  seatedAt     DateTime?
+  /// Soft revocation: access is denied while true.
+  isRemoved    Boolean  @default(false)
+
+  assembly Assembly @relation(fields: [assemblyId], references: [id], onDelete: Cascade)
+  member   Member   @relation("AssemblyMemberships", fields: [memberId], references: [memberId])
+
+  @@unique([assemblyId, memberId])
+  @@index([memberId])
+}
+
+/// THE RECORD OF PRESENCE. Attendance is entered only by an
+/// authorized officer from genuine records — never fabricated.
+model AssemblyAttendance {
+  id          String   @id @default(cuid())
+  assemblyId  String
+  memberId    String
+  /// PRESENT | ABSENT | EXCUSED
+  disposition String
+  /// The authorized official who recorded the presence.
+  recordedBy  String
+  recordedAt  DateTime @default(now())
+
+  assembly Assembly @relation(fields: [assemblyId], references: [id], onDelete: Cascade)
+  member   Member   @relation("AssemblyAttendanceRecords", fields: [memberId], references: [memberId])
+
+  @@unique([assemblyId, memberId])
+  @@index([assemblyId])
+}
+
+/// THE OFFICIAL RECORD of an assembly. Sealed records stay sealed.
+model AssemblyRecord {
+  id          String   @id @default(cuid())
+  assemblyId  String   @unique
+  /// PENDING | PRESERVED | SEALED | INCOMPLETE | LOST
+  status      String   @default("PENDING")
+  /// Official summary. May remain empty for sealed records.
+  summary     String?
+  sealedAt    DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  assembly Assembly @relation(fields: [assemblyId], references: [id], onDelete: Cascade)
+}
+
+/// Documents formally attached to an assembly's record.
+model AssemblyDocument {
+  id             String   @id @default(cuid())
+  assemblyId     String
+  title          String
+  classification String
+  /// Register reference, e.g. "BOL-AS-0007·DOC-01".
+  reference      String?
+  /// PRESERVED | SEALED | FRAGMENT
+  status         String   @default("PRESERVED")
+  body           String?
+  createdAt      DateTime @default(now())
+
+  assembly Assembly @relation(fields: [assemblyId], references: [id], onDelete: Cascade)
+
+  @@index([assemblyId])
 }

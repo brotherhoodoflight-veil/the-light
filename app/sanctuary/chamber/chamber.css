@@ -1,0 +1,388 @@
+/* ────────────────────────────────────────────────────────────
+   THE CHAMBER — The Private Chamber of the Order
+   A locked inner room: deep navy against black, restrained
+   ivory, muted antique gold, thin rules, deliberate silence.
+   Same Brotherhood as the Sanctuary; a darker register within it.
+   Namespaced .sc-chamber-* so it never collides with the rest
+   of the VEIL design system.
+   ──────────────────────────────────────────────────────────── */
+
+.sc-chamber-page {
+  /* A colder, darker backdrop than the warm Sanctuary ink.
+     The chamber sits below the first floor. */
+  background:
+    radial-gradient(90% 64% at 50% -6%, rgba(43, 70, 112, 0.16), transparent 56%),
+    radial-gradient(circle at 50% 118%, rgba(8, 20, 34, 0.6), transparent 60%),
+    radial-gradient(circle at 50% 38%, rgba(193, 168, 104, 0.04), transparent 44%),
+    linear-gradient(180deg, #0b101c 0%, #070b13 46%, #03050a 100%);
+}
+
+.sc-chamber-shell {
+  position: relative;
+  z-index: 2;
+  width: min(760px, 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  animation: entFadeUp 1s ease both;
+}
+
+.sc-chamber-eyebrow {
+  margin: 16px 0 0;
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+  font-size: 9.5px;
+  font-weight: 400;
+  letter-spacing: 0.46em;
+  text-indent: 0.46em;
+  text-transform: uppercase;
+  color: var(--sc-gold);
+  opacity: 0.56;
+}
+
+.sc-chamber-title {
+  margin: 14px 0 0;
+  font-family: var(--font-cormorant);
+  font-size: clamp(34px, 7vw, 58px);
+  font-weight: 400;
+  letter-spacing: 0.24em;
+  text-indent: 0.24em;
+  line-height: 1.06;
+  background: linear-gradient(180deg, #f6efdb 0%, #e6dab5 46%, #c2ac78 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 22px rgba(193, 168, 104, 0.13));
+}
+
+.sc-chamber-reception {
+  margin: 0;
+  font-family: var(--font-cormorant);
+  font-size: clamp(16px, 2.8vw, 21px);
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-indent: 0.2em;
+  color: var(--sc-ivory);
+  opacity: 0.9;
+  animation: tpFadeUp 1.4s ease 0.45s both;
+}
+
+.sc-chamber-intro {
+  margin: 42px auto 0;
+  max-width: 520px;
+  font-family: var(--font-cormorant);
+  font-size: clamp(15px, 2.8vw, 18px);
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 0.03em;
+  line-height: 2;
+  color: var(--sc-ivory);
+  opacity: 0.88;
+}
+
+/* ── Section headings ── */
+
+.sc-chamber-section {
+  margin: 68px auto 0;
+  width: min(560px, 100%);
+}
+
+.sc-chamber-section-numeral {
+  display: block;
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.42em;
+  text-indent: 0.42em;
+  text-transform: uppercase;
+  color: var(--sc-gold);
+  opacity: 0.4;
+}
+
+.sc-chamber-section-title {
+  margin: 10px 0 0;
+  font-family: var(--font-cormorant);
+  font-size: clamp(21px, 4.4vw, 28px);
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-indent: 0.14em;
+  line-height: 1.2;
+  color: var(--sc-gold);
+}
+
+.sc-chamber-section-rule {
+  width: 48px;
+  height: 1px;
+  margin: 24px auto 0;
+  background: linear-gradient(90deg, transparent, rgba(193, 168, 104, 0.5), transparent);
+}
+
+/* ── The registers / frames ── */
+
+.sc-chamber-frame {
+  margin-top: 28px;
+  border-top: 1px solid rgba(193, 168, 104, 0.14);
+  border-bottom: 1px solid rgba(193, 168, 104, 0.1);
+}
+
+/* ── Dispatches ── */
+
+.sc-chamber-dispatch {
+  padding: 24px 0 22px;
+  text-align: left;
+}
+
+.sc-chamber-dispatch + .sc-chamber-dispatch {
+  border-top: 1px solid rgba(236, 229, 211, 0.05);
+}
+
+.sc-chamber-dispatch-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.sc-chamber-dispatch-source {
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  text-indent: 0.3em;
+  text-transform: uppercase;
+  color: var(--sc-gold);
+  opacity: 0.85;
+}
+
+.sc-chamber-dispatch-date {
+  flex: 0 0 auto;
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+  font-size: 8px;
+  font-weight: 400;
+  letter-spacing: 0.24em;
+  text-indent: 0.24em;
+  text-transform: uppercase;
+  color: var(--sc-faint);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.sc-chamber-dispatch-author {
+  margin: 12px 0 0;
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+  font-size: 8.5px;
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  text-indent: 0.3em;
+  text-transform: uppercase;
+  color: var(--sc-soft);
+}
+
+.sc-chamber-dispatch-body {
+  margin: 14px 0 0;
+  font-family: var(--font-cormorant);
+  font-size: clamp(15px, 2.8vw, 17px);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1.8;
+  color: var(--sc-ivory);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.sc-chamber-dispatch-state {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.sc-chamber-dispatch-state-mark {
+  flex: 0 0 auto;
+  width: 5px;
+  height: 5px;
+  transform: rotate(45deg);
+  background: rgba(193, 168, 104, 0.16);
+}
+
+.sc-chamber-dispatch.is-unread .sc-chamber-dispatch-state-mark {
+  background: var(--sc-gold);
+  box-shadow: 0 0 8px rgba(193, 168, 104, 0.5);
+}
+
+.sc-chamber-dispatch-state-text {
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+  font-size: 8px;
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  text-indent: 0.3em;
+  text-transform: uppercase;
+  color: var(--sc-faint);
+}
+
+.sc-chamber-dispatch.is-unread .sc-chamber-dispatch-state-text {
+  color: var(--sc-gold);
+}
+
+/* ── Empty registers ── */
+
+.sc-chamber-empty {
+  padding: 32px 0;
+  text-align: center;
+}
+
+.sc-chamber-empty-primary {
+  margin: 0;
+  font-family: var(--font-cormorant);
+  font-size: clamp(16px, 3vw, 19px);
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-indent: 0.1em;
+  line-height: 1.6;
+  text-transform: uppercase;
+  color: var(--sc-gold);
+  opacity: 0.72;
+}
+
+.sc-chamber-empty-secondary {
+  margin: 14px 0 0;
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+  font-size: 8.5px;
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  text-indent: 0.3em;
+  line-height: 1.9;
+  text-transform: uppercase;
+  color: var(--sc-faint);
+}
+
+/* ── Initiator line ── */
+
+.sc-chamber-initiator-line {
+  margin: 20px 0 0;
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.32em;
+  text-indent: 0.32em;
+  line-height: 1.9;
+  text-transform: uppercase;
+  color: var(--sc-soft);
+}
+
+/* ── The Silence ── */
+
+.sc-chamber-silence {
+  margin: 28px auto 0;
+  max-width: 520px;
+  font-family: var(--font-cormorant);
+  font-size: clamp(15px, 2.8vw, 18px);
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 0.03em;
+  line-height: 2.05;
+  color: var(--sc-ivory);
+  opacity: 0.9;
+}
+
+/* ── Chamber notice ── */
+
+.sc-chamber-notice {
+  margin-top: 28px;
+  padding: 36px 0;
+  border-top: 1px solid rgba(193, 168, 104, 0.14);
+  border-bottom: 1px solid rgba(193, 168, 104, 0.1);
+  text-align: center;
+}
+
+.sc-chamber-notice-line {
+  margin: 0;
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.34em;
+  text-indent: 0.34em;
+  line-height: 2.2;
+  text-transform: uppercase;
+  color: var(--sc-gold);
+  opacity: 0.85;
+}
+
+.sc-chamber-notice-note {
+  margin: 20px 0 0;
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+  font-size: 8.5px;
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  text-indent: 0.3em;
+  line-height: 2;
+  text-transform: uppercase;
+  color: var(--sc-soft);
+}
+
+/* ────────────────────────────────────────────────────────────
+   RESPONSIVE
+   ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 640px) {
+  .sc-chamber-section {
+    width: min(520px, 100%);
+  }
+}
+
+@media (max-width: 480px) {
+  .sc-chamber-shell {
+    padding-top: 8px;
+  }
+
+  .sc-chamber-eyebrow {
+    letter-spacing: 0.34em;
+    text-indent: 0.34em;
+  }
+
+  .sc-chamber-title {
+    font-size: clamp(28px, 8.5vw, 40px);
+    letter-spacing: 0.18em;
+    text-indent: 0.18em;
+  }
+
+  .sc-chamber-reception {
+    font-size: clamp(14px, 3.4vw, 18px);
+    letter-spacing: 0.16em;
+    text-indent: 0.16em;
+  }
+
+  .sc-chamber-intro {
+    margin-top: 34px;
+    font-size: 15px;
+    line-height: 1.9;
+  }
+
+  .sc-chamber-section {
+    margin-top: 52px;
+  }
+
+  .sc-chamber-dispatch {
+    padding: 20px 0 18px;
+  }
+
+  .sc-chamber-dispatch-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .sc-chamber-dispatch-body {
+    font-size: 15px;
+    line-height: 1.8;
+  }
+
+  .sc-chamber-silence {
+    font-size: 15px;
+    line-height: 1.95;
+  }
+
+  .sc-chamber-notice {
+    padding: 26px 0;
+  }
+}

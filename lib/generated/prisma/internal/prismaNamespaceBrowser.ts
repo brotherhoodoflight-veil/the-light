@@ -60,7 +60,12 @@ export const ModelName = {
   MessageAttachment: 'MessageAttachment',
   Notification: 'Notification',
   ConversationAudit: 'ConversationAudit',
-  MessageReport: 'MessageReport'
+  MessageReport: 'MessageReport',
+  Assembly: 'Assembly',
+  AssemblyMember: 'AssemblyMember',
+  AssemblyAttendance: 'AssemblyAttendance',
+  AssemblyRecord: 'AssemblyRecord',
+  AssemblyDocument: 'AssemblyDocument'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -87,6 +92,13 @@ export const MemberScalarFieldEnum = {
   status: 'status',
   role: 'role',
   country: 'country',
+  nationality: 'nationality',
+  sex: 'sex',
+  cityOfResidence: 'cityOfResidence',
+  idCardType: 'idCardType',
+  idCardNumber: 'idCardNumber',
+  maritalStatus: 'maritalStatus',
+  occupation: 'occupation',
   countryInitiator: 'countryInitiator',
   journeyStartedYear: 'journeyStartedYear',
   formalApprovalYear: 'formalApprovalYear',
@@ -223,6 +235,83 @@ export const MessageReportScalarFieldEnum = {
 } as const
 
 export type MessageReportScalarFieldEnum = (typeof MessageReportScalarFieldEnum)[keyof typeof MessageReportScalarFieldEnum]
+
+
+export const AssemblyScalarFieldEnum = {
+  id: 'id',
+  assemblyNumber: 'assemblyNumber',
+  title: 'title',
+  classification: 'classification',
+  purpose: 'purpose',
+  status: 'status',
+  accessLevel: 'accessLevel',
+  country: 'country',
+  location: 'location',
+  hourOfDay: 'hourOfDay',
+  convenedAt: 'convenedAt',
+  presidingMemberId: 'presidingMemberId',
+  issuedByMemberId: 'issuedByMemberId',
+  witnessDeclamation: 'witnessDeclamation',
+  discussionConversationId: 'discussionConversationId',
+  createdByMemberId: 'createdByMemberId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type AssemblyScalarFieldEnum = (typeof AssemblyScalarFieldEnum)[keyof typeof AssemblyScalarFieldEnum]
+
+
+export const AssemblyMemberScalarFieldEnum = {
+  id: 'id',
+  assemblyId: 'assemblyId',
+  memberId: 'memberId',
+  seat: 'seat',
+  response: 'response',
+  respondedAt: 'respondedAt',
+  seatedAt: 'seatedAt',
+  isRemoved: 'isRemoved'
+} as const
+
+export type AssemblyMemberScalarFieldEnum = (typeof AssemblyMemberScalarFieldEnum)[keyof typeof AssemblyMemberScalarFieldEnum]
+
+
+export const AssemblyAttendanceScalarFieldEnum = {
+  id: 'id',
+  assemblyId: 'assemblyId',
+  memberId: 'memberId',
+  disposition: 'disposition',
+  recordedBy: 'recordedBy',
+  recordedAt: 'recordedAt'
+} as const
+
+export type AssemblyAttendanceScalarFieldEnum = (typeof AssemblyAttendanceScalarFieldEnum)[keyof typeof AssemblyAttendanceScalarFieldEnum]
+
+
+export const AssemblyRecordScalarFieldEnum = {
+  id: 'id',
+  assemblyId: 'assemblyId',
+  status: 'status',
+  summary: 'summary',
+  sealedAt: 'sealedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type AssemblyRecordScalarFieldEnum = (typeof AssemblyRecordScalarFieldEnum)[keyof typeof AssemblyRecordScalarFieldEnum]
+
+
+export const AssemblyDocumentScalarFieldEnum = {
+  id: 'id',
+  assemblyId: 'assemblyId',
+  title: 'title',
+  classification: 'classification',
+  reference: 'reference',
+  status: 'status',
+  body: 'body',
+  createdAt: 'createdAt'
+} as const
+
+export type AssemblyDocumentScalarFieldEnum = (typeof AssemblyDocumentScalarFieldEnum)[keyof typeof AssemblyDocumentScalarFieldEnum]
 
 
 export const SortOrder = {

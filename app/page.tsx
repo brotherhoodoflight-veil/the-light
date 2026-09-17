@@ -1,42 +1,50 @@
-export default function Home() {
+import Link from "next/link";
+
+export default function EntrancePage() {
   return (
-    <main className="veil-home">
-      <div className="veil-symbol" aria-hidden="true">
-        ◈
+    <main className="bol-page">
+      <div className="bol-void" aria-hidden="true" />
+      <div className="bol-grain" aria-hidden="true" />
+      <div className="bol-veil" aria-hidden="true">
+        <div className="bol-veil-axis" />
+        <div className="bol-veil-glow" />
       </div>
 
-      <section className="veil-content">
-        <p className="eyebrow">THE BROTHERHOOD OF LIGHT</p>
+      <div className="bol-stage">
+        <p className="bol-order">THE SACRED ORDER OF THE VEILED LIGHT</p>
 
-        <h1>VEIL</h1>
+        <h1 className="bol-title">
+          <span className="bol-title-line">BROTHERHOOD</span>
+          <span className="bol-title-line">OF</span>
+          <span className="bol-title-line">LIGHT</span>
+        </h1>
 
-        <p className="subtitle">
-          PRIVATE GLOBAL FRATERNITY PORTAL
+        <div className="bol-rule" aria-hidden="true">
+          <span className="bol-rule-core" />
+        </div>
+
+        <p className="bol-declaration">LIGHT EXISTS BEHIND THE VEIL.</p>
+
+        <p className="bol-charge">
+          The Order keeps no public register and receives no casual witness.
+          Its knowledge is held in confidence.
+          Its authority is closed until granted.
+          Its membership is chosen, never requested.
+          The institution itself is not displayed here;
+          it stands beyond the threshold.
         </p>
 
-        <div className="divider" aria-hidden="true" />
+        <div className="bol-action">
+          <Link href="/threshold" className="bol-approach">
+            <span className="bol-approach-text">APPROACH THE THRESHOLD</span>
+          </Link>
+        </div>
+      </div>
 
-        <p className="intro">
-          A private digital sanctuary for recognized members,
-          candidates, and authorized officers of The Brotherhood
-          of Light.
-        </p>
-
-        <a href="/login" className="enter-button">
-          ENTER THE VEIL
-        </a>
-
-        <p className="restricted">
-          PRIVATE ACCESS • INVITATION ONLY
-        </p>
-      </section>
-
-      <footer className="veil-footer">
-        <span>THE BROTHERHOOD OF LIGHT</span>
-        <span>•</span>
-        <span>VEIL</span>
-        <span>•</span>
-        <span>AUTHORIZED ACCESS</span>
+      <footer className="bol-foot">
+        <span className="bol-foot-text">THE BROTHERHOOD OF LIGHT</span>
+        <span className="bol-foot-sep" aria-hidden="true">&middot;</span>
+        <span className="bol-foot-text">A PRIVATE INSTITUTION</span>
       </footer>
     </main>
   );

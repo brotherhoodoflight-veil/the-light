@@ -85,3 +85,31 @@ export type ConversationAudit = Prisma.ConversationAuditModel
  * A member-reported message awaiting moderation review.
  */
 export type MessageReport = Prisma.MessageReportModel
+/**
+ * Model Assembly
+ * A formal Assembly of the Brotherhood. Records are entered only
+ * for genuine, authorized convocations.
+ */
+export type Assembly = Prisma.AssemblyModel
+/**
+ * Model AssemblyMember
+ * A member's place in an assembly. The source of truth for who may
+ * see restricted chambers and who must answer the call.
+ */
+export type AssemblyMember = Prisma.AssemblyMemberModel
+/**
+ * Model AssemblyAttendance
+ * THE RECORD OF PRESENCE. Attendance is entered only by an
+ * authorized officer from genuine records — never fabricated.
+ */
+export type AssemblyAttendance = Prisma.AssemblyAttendanceModel
+/**
+ * Model AssemblyRecord
+ * THE OFFICIAL RECORD of an assembly. Sealed records stay sealed.
+ */
+export type AssemblyRecord = Prisma.AssemblyRecordModel
+/**
+ * Model AssemblyDocument
+ * Documents formally attached to an assembly's record.
+ */
+export type AssemblyDocument = Prisma.AssemblyDocumentModel

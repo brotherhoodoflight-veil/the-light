@@ -50,6 +50,13 @@ export type MemberMinAggregateOutputType = {
   status: string | null
   role: string | null
   country: string | null
+  nationality: string | null
+  sex: string | null
+  cityOfResidence: string | null
+  idCardType: string | null
+  idCardNumber: string | null
+  maritalStatus: string | null
+  occupation: string | null
   countryInitiator: string | null
   journeyStartedYear: number | null
   formalApprovalYear: number | null
@@ -79,6 +86,13 @@ export type MemberMaxAggregateOutputType = {
   status: string | null
   role: string | null
   country: string | null
+  nationality: string | null
+  sex: string | null
+  cityOfResidence: string | null
+  idCardType: string | null
+  idCardNumber: string | null
+  maritalStatus: string | null
+  occupation: string | null
   countryInitiator: string | null
   journeyStartedYear: number | null
   formalApprovalYear: number | null
@@ -108,6 +122,13 @@ export type MemberCountAggregateOutputType = {
   status: number
   role: number
   country: number
+  nationality: number
+  sex: number
+  cityOfResidence: number
+  idCardType: number
+  idCardNumber: number
+  maritalStatus: number
+  occupation: number
   countryInitiator: number
   journeyStartedYear: number
   formalApprovalYear: number
@@ -151,6 +172,13 @@ export type MemberMinAggregateInputType = {
   status?: true
   role?: true
   country?: true
+  nationality?: true
+  sex?: true
+  cityOfResidence?: true
+  idCardType?: true
+  idCardNumber?: true
+  maritalStatus?: true
+  occupation?: true
   countryInitiator?: true
   journeyStartedYear?: true
   formalApprovalYear?: true
@@ -180,6 +208,13 @@ export type MemberMaxAggregateInputType = {
   status?: true
   role?: true
   country?: true
+  nationality?: true
+  sex?: true
+  cityOfResidence?: true
+  idCardType?: true
+  idCardNumber?: true
+  maritalStatus?: true
+  occupation?: true
   countryInitiator?: true
   journeyStartedYear?: true
   formalApprovalYear?: true
@@ -209,6 +244,13 @@ export type MemberCountAggregateInputType = {
   status?: true
   role?: true
   country?: true
+  nationality?: true
+  sex?: true
+  cityOfResidence?: true
+  idCardType?: true
+  idCardNumber?: true
+  maritalStatus?: true
+  occupation?: true
   countryInitiator?: true
   journeyStartedYear?: true
   formalApprovalYear?: true
@@ -325,6 +367,13 @@ export type MemberGroupByOutputType = {
   status: string
   role: string
   country: string
+  nationality: string | null
+  sex: string | null
+  cityOfResidence: string | null
+  idCardType: string | null
+  idCardNumber: string | null
+  maritalStatus: string | null
+  occupation: string | null
   countryInitiator: string | null
   journeyStartedYear: number | null
   formalApprovalYear: number | null
@@ -377,6 +426,13 @@ export type MemberWhereInput = {
   status?: Prisma.StringFilter<"Member"> | string
   role?: Prisma.StringFilter<"Member"> | string
   country?: Prisma.StringFilter<"Member"> | string
+  nationality?: Prisma.StringNullableFilter<"Member"> | string | null
+  sex?: Prisma.StringNullableFilter<"Member"> | string | null
+  cityOfResidence?: Prisma.StringNullableFilter<"Member"> | string | null
+  idCardType?: Prisma.StringNullableFilter<"Member"> | string | null
+  idCardNumber?: Prisma.StringNullableFilter<"Member"> | string | null
+  maritalStatus?: Prisma.StringNullableFilter<"Member"> | string | null
+  occupation?: Prisma.StringNullableFilter<"Member"> | string | null
   countryInitiator?: Prisma.StringNullableFilter<"Member"> | string | null
   journeyStartedYear?: Prisma.IntNullableFilter<"Member"> | number | null
   formalApprovalYear?: Prisma.IntNullableFilter<"Member"> | number | null
@@ -401,6 +457,10 @@ export type MemberWhereInput = {
   notifications?: Prisma.NotificationListRelationFilter
   conversationAudits?: Prisma.ConversationAuditListRelationFilter
   messageReports?: Prisma.MessageReportListRelationFilter
+  assemblySeats?: Prisma.AssemblyMemberListRelationFilter
+  attendanceRecords?: Prisma.AssemblyAttendanceListRelationFilter
+  presidingAssemblies?: Prisma.AssemblyListRelationFilter
+  issuingAssemblies?: Prisma.AssemblyListRelationFilter
 }
 
 export type MemberOrderByWithRelationInput = {
@@ -414,6 +474,13 @@ export type MemberOrderByWithRelationInput = {
   status?: Prisma.SortOrder
   role?: Prisma.SortOrder
   country?: Prisma.SortOrder
+  nationality?: Prisma.SortOrderInput | Prisma.SortOrder
+  sex?: Prisma.SortOrderInput | Prisma.SortOrder
+  cityOfResidence?: Prisma.SortOrderInput | Prisma.SortOrder
+  idCardType?: Prisma.SortOrderInput | Prisma.SortOrder
+  idCardNumber?: Prisma.SortOrderInput | Prisma.SortOrder
+  maritalStatus?: Prisma.SortOrderInput | Prisma.SortOrder
+  occupation?: Prisma.SortOrderInput | Prisma.SortOrder
   countryInitiator?: Prisma.SortOrderInput | Prisma.SortOrder
   journeyStartedYear?: Prisma.SortOrderInput | Prisma.SortOrder
   formalApprovalYear?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -438,6 +505,10 @@ export type MemberOrderByWithRelationInput = {
   notifications?: Prisma.NotificationOrderByRelationAggregateInput
   conversationAudits?: Prisma.ConversationAuditOrderByRelationAggregateInput
   messageReports?: Prisma.MessageReportOrderByRelationAggregateInput
+  assemblySeats?: Prisma.AssemblyMemberOrderByRelationAggregateInput
+  attendanceRecords?: Prisma.AssemblyAttendanceOrderByRelationAggregateInput
+  presidingAssemblies?: Prisma.AssemblyOrderByRelationAggregateInput
+  issuingAssemblies?: Prisma.AssemblyOrderByRelationAggregateInput
 }
 
 export type MemberWhereUniqueInput = Prisma.AtLeast<{
@@ -454,6 +525,13 @@ export type MemberWhereUniqueInput = Prisma.AtLeast<{
   status?: Prisma.StringFilter<"Member"> | string
   role?: Prisma.StringFilter<"Member"> | string
   country?: Prisma.StringFilter<"Member"> | string
+  nationality?: Prisma.StringNullableFilter<"Member"> | string | null
+  sex?: Prisma.StringNullableFilter<"Member"> | string | null
+  cityOfResidence?: Prisma.StringNullableFilter<"Member"> | string | null
+  idCardType?: Prisma.StringNullableFilter<"Member"> | string | null
+  idCardNumber?: Prisma.StringNullableFilter<"Member"> | string | null
+  maritalStatus?: Prisma.StringNullableFilter<"Member"> | string | null
+  occupation?: Prisma.StringNullableFilter<"Member"> | string | null
   countryInitiator?: Prisma.StringNullableFilter<"Member"> | string | null
   journeyStartedYear?: Prisma.IntNullableFilter<"Member"> | number | null
   formalApprovalYear?: Prisma.IntNullableFilter<"Member"> | number | null
@@ -478,6 +556,10 @@ export type MemberWhereUniqueInput = Prisma.AtLeast<{
   notifications?: Prisma.NotificationListRelationFilter
   conversationAudits?: Prisma.ConversationAuditListRelationFilter
   messageReports?: Prisma.MessageReportListRelationFilter
+  assemblySeats?: Prisma.AssemblyMemberListRelationFilter
+  attendanceRecords?: Prisma.AssemblyAttendanceListRelationFilter
+  presidingAssemblies?: Prisma.AssemblyListRelationFilter
+  issuingAssemblies?: Prisma.AssemblyListRelationFilter
 }, "id" | "memberId">
 
 export type MemberOrderByWithAggregationInput = {
@@ -491,6 +573,13 @@ export type MemberOrderByWithAggregationInput = {
   status?: Prisma.SortOrder
   role?: Prisma.SortOrder
   country?: Prisma.SortOrder
+  nationality?: Prisma.SortOrderInput | Prisma.SortOrder
+  sex?: Prisma.SortOrderInput | Prisma.SortOrder
+  cityOfResidence?: Prisma.SortOrderInput | Prisma.SortOrder
+  idCardType?: Prisma.SortOrderInput | Prisma.SortOrder
+  idCardNumber?: Prisma.SortOrderInput | Prisma.SortOrder
+  maritalStatus?: Prisma.SortOrderInput | Prisma.SortOrder
+  occupation?: Prisma.SortOrderInput | Prisma.SortOrder
   countryInitiator?: Prisma.SortOrderInput | Prisma.SortOrder
   journeyStartedYear?: Prisma.SortOrderInput | Prisma.SortOrder
   formalApprovalYear?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -528,6 +617,13 @@ export type MemberScalarWhereWithAggregatesInput = {
   status?: Prisma.StringWithAggregatesFilter<"Member"> | string
   role?: Prisma.StringWithAggregatesFilter<"Member"> | string
   country?: Prisma.StringWithAggregatesFilter<"Member"> | string
+  nationality?: Prisma.StringNullableWithAggregatesFilter<"Member"> | string | null
+  sex?: Prisma.StringNullableWithAggregatesFilter<"Member"> | string | null
+  cityOfResidence?: Prisma.StringNullableWithAggregatesFilter<"Member"> | string | null
+  idCardType?: Prisma.StringNullableWithAggregatesFilter<"Member"> | string | null
+  idCardNumber?: Prisma.StringNullableWithAggregatesFilter<"Member"> | string | null
+  maritalStatus?: Prisma.StringNullableWithAggregatesFilter<"Member"> | string | null
+  occupation?: Prisma.StringNullableWithAggregatesFilter<"Member"> | string | null
   countryInitiator?: Prisma.StringNullableWithAggregatesFilter<"Member"> | string | null
   journeyStartedYear?: Prisma.IntNullableWithAggregatesFilter<"Member"> | number | null
   formalApprovalYear?: Prisma.IntNullableWithAggregatesFilter<"Member"> | number | null
@@ -557,6 +653,13 @@ export type MemberCreateInput = {
   status: string
   role: string
   country: string
+  nationality?: string | null
+  sex?: string | null
+  cityOfResidence?: string | null
+  idCardType?: string | null
+  idCardNumber?: string | null
+  maritalStatus?: string | null
+  occupation?: string | null
   countryInitiator?: string | null
   journeyStartedYear?: number | null
   formalApprovalYear?: number | null
@@ -581,6 +684,10 @@ export type MemberCreateInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutMemberInput
   conversationAudits?: Prisma.ConversationAuditCreateNestedManyWithoutActorInput
   messageReports?: Prisma.MessageReportCreateNestedManyWithoutReportedByInput
+  assemblySeats?: Prisma.AssemblyMemberCreateNestedManyWithoutMemberInput
+  attendanceRecords?: Prisma.AssemblyAttendanceCreateNestedManyWithoutMemberInput
+  presidingAssemblies?: Prisma.AssemblyCreateNestedManyWithoutPresidingMemberInput
+  issuingAssemblies?: Prisma.AssemblyCreateNestedManyWithoutIssuingMemberInput
 }
 
 export type MemberUncheckedCreateInput = {
@@ -594,6 +701,13 @@ export type MemberUncheckedCreateInput = {
   status: string
   role: string
   country: string
+  nationality?: string | null
+  sex?: string | null
+  cityOfResidence?: string | null
+  idCardType?: string | null
+  idCardNumber?: string | null
+  maritalStatus?: string | null
+  occupation?: string | null
   countryInitiator?: string | null
   journeyStartedYear?: number | null
   formalApprovalYear?: number | null
@@ -618,6 +732,10 @@ export type MemberUncheckedCreateInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutMemberInput
   conversationAudits?: Prisma.ConversationAuditUncheckedCreateNestedManyWithoutActorInput
   messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReportedByInput
+  assemblySeats?: Prisma.AssemblyMemberUncheckedCreateNestedManyWithoutMemberInput
+  attendanceRecords?: Prisma.AssemblyAttendanceUncheckedCreateNestedManyWithoutMemberInput
+  presidingAssemblies?: Prisma.AssemblyUncheckedCreateNestedManyWithoutPresidingMemberInput
+  issuingAssemblies?: Prisma.AssemblyUncheckedCreateNestedManyWithoutIssuingMemberInput
 }
 
 export type MemberUpdateInput = {
@@ -631,6 +749,13 @@ export type MemberUpdateInput = {
   status?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.StringFieldUpdateOperationsInput | string
   country?: Prisma.StringFieldUpdateOperationsInput | string
+  nationality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sex?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cityOfResidence?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idCardType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idCardNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  maritalStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  occupation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   countryInitiator?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   journeyStartedYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   formalApprovalYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -655,6 +780,10 @@ export type MemberUpdateInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutMemberNestedInput
   conversationAudits?: Prisma.ConversationAuditUpdateManyWithoutActorNestedInput
   messageReports?: Prisma.MessageReportUpdateManyWithoutReportedByNestedInput
+  assemblySeats?: Prisma.AssemblyMemberUpdateManyWithoutMemberNestedInput
+  attendanceRecords?: Prisma.AssemblyAttendanceUpdateManyWithoutMemberNestedInput
+  presidingAssemblies?: Prisma.AssemblyUpdateManyWithoutPresidingMemberNestedInput
+  issuingAssemblies?: Prisma.AssemblyUpdateManyWithoutIssuingMemberNestedInput
 }
 
 export type MemberUncheckedUpdateInput = {
@@ -668,6 +797,13 @@ export type MemberUncheckedUpdateInput = {
   status?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.StringFieldUpdateOperationsInput | string
   country?: Prisma.StringFieldUpdateOperationsInput | string
+  nationality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sex?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cityOfResidence?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idCardType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idCardNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  maritalStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  occupation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   countryInitiator?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   journeyStartedYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   formalApprovalYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -692,6 +828,10 @@ export type MemberUncheckedUpdateInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutMemberNestedInput
   conversationAudits?: Prisma.ConversationAuditUncheckedUpdateManyWithoutActorNestedInput
   messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReportedByNestedInput
+  assemblySeats?: Prisma.AssemblyMemberUncheckedUpdateManyWithoutMemberNestedInput
+  attendanceRecords?: Prisma.AssemblyAttendanceUncheckedUpdateManyWithoutMemberNestedInput
+  presidingAssemblies?: Prisma.AssemblyUncheckedUpdateManyWithoutPresidingMemberNestedInput
+  issuingAssemblies?: Prisma.AssemblyUncheckedUpdateManyWithoutIssuingMemberNestedInput
 }
 
 export type MemberCreateManyInput = {
@@ -705,6 +845,13 @@ export type MemberCreateManyInput = {
   status: string
   role: string
   country: string
+  nationality?: string | null
+  sex?: string | null
+  cityOfResidence?: string | null
+  idCardType?: string | null
+  idCardNumber?: string | null
+  maritalStatus?: string | null
+  occupation?: string | null
   countryInitiator?: string | null
   journeyStartedYear?: number | null
   formalApprovalYear?: number | null
@@ -734,6 +881,13 @@ export type MemberUpdateManyMutationInput = {
   status?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.StringFieldUpdateOperationsInput | string
   country?: Prisma.StringFieldUpdateOperationsInput | string
+  nationality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sex?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cityOfResidence?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idCardType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idCardNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  maritalStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  occupation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   countryInitiator?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   journeyStartedYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   formalApprovalYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -763,6 +917,13 @@ export type MemberUncheckedUpdateManyInput = {
   status?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.StringFieldUpdateOperationsInput | string
   country?: Prisma.StringFieldUpdateOperationsInput | string
+  nationality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sex?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cityOfResidence?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idCardType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idCardNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  maritalStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  occupation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   countryInitiator?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   journeyStartedYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   formalApprovalYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -792,6 +953,13 @@ export type MemberCountOrderByAggregateInput = {
   status?: Prisma.SortOrder
   role?: Prisma.SortOrder
   country?: Prisma.SortOrder
+  nationality?: Prisma.SortOrder
+  sex?: Prisma.SortOrder
+  cityOfResidence?: Prisma.SortOrder
+  idCardType?: Prisma.SortOrder
+  idCardNumber?: Prisma.SortOrder
+  maritalStatus?: Prisma.SortOrder
+  occupation?: Prisma.SortOrder
   countryInitiator?: Prisma.SortOrder
   journeyStartedYear?: Prisma.SortOrder
   formalApprovalYear?: Prisma.SortOrder
@@ -827,6 +995,13 @@ export type MemberMaxOrderByAggregateInput = {
   status?: Prisma.SortOrder
   role?: Prisma.SortOrder
   country?: Prisma.SortOrder
+  nationality?: Prisma.SortOrder
+  sex?: Prisma.SortOrder
+  cityOfResidence?: Prisma.SortOrder
+  idCardType?: Prisma.SortOrder
+  idCardNumber?: Prisma.SortOrder
+  maritalStatus?: Prisma.SortOrder
+  occupation?: Prisma.SortOrder
   countryInitiator?: Prisma.SortOrder
   journeyStartedYear?: Prisma.SortOrder
   formalApprovalYear?: Prisma.SortOrder
@@ -856,6 +1031,13 @@ export type MemberMinOrderByAggregateInput = {
   status?: Prisma.SortOrder
   role?: Prisma.SortOrder
   country?: Prisma.SortOrder
+  nationality?: Prisma.SortOrder
+  sex?: Prisma.SortOrder
+  cityOfResidence?: Prisma.SortOrder
+  idCardType?: Prisma.SortOrder
+  idCardNumber?: Prisma.SortOrder
+  maritalStatus?: Prisma.SortOrder
+  occupation?: Prisma.SortOrder
   countryInitiator?: Prisma.SortOrder
   journeyStartedYear?: Prisma.SortOrder
   formalApprovalYear?: Prisma.SortOrder
@@ -883,6 +1065,11 @@ export type MemberSumOrderByAggregateInput = {
 export type MemberScalarRelationFilter = {
   is?: Prisma.MemberWhereInput
   isNot?: Prisma.MemberWhereInput
+}
+
+export type MemberNullableScalarRelationFilter = {
+  is?: Prisma.MemberWhereInput | null
+  isNot?: Prisma.MemberWhereInput | null
 }
 
 export type StringFieldUpdateOperationsInput = {
@@ -1021,6 +1208,66 @@ export type MemberUpdateOneRequiredWithoutMessageReportsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.MemberUpdateToOneWithWhereWithoutMessageReportsInput, Prisma.MemberUpdateWithoutMessageReportsInput>, Prisma.MemberUncheckedUpdateWithoutMessageReportsInput>
 }
 
+export type MemberCreateNestedOneWithoutPresidingAssembliesInput = {
+  create?: Prisma.XOR<Prisma.MemberCreateWithoutPresidingAssembliesInput, Prisma.MemberUncheckedCreateWithoutPresidingAssembliesInput>
+  connectOrCreate?: Prisma.MemberCreateOrConnectWithoutPresidingAssembliesInput
+  connect?: Prisma.MemberWhereUniqueInput
+}
+
+export type MemberCreateNestedOneWithoutIssuingAssembliesInput = {
+  create?: Prisma.XOR<Prisma.MemberCreateWithoutIssuingAssembliesInput, Prisma.MemberUncheckedCreateWithoutIssuingAssembliesInput>
+  connectOrCreate?: Prisma.MemberCreateOrConnectWithoutIssuingAssembliesInput
+  connect?: Prisma.MemberWhereUniqueInput
+}
+
+export type MemberUpdateOneWithoutPresidingAssembliesNestedInput = {
+  create?: Prisma.XOR<Prisma.MemberCreateWithoutPresidingAssembliesInput, Prisma.MemberUncheckedCreateWithoutPresidingAssembliesInput>
+  connectOrCreate?: Prisma.MemberCreateOrConnectWithoutPresidingAssembliesInput
+  upsert?: Prisma.MemberUpsertWithoutPresidingAssembliesInput
+  disconnect?: Prisma.MemberWhereInput | boolean
+  delete?: Prisma.MemberWhereInput | boolean
+  connect?: Prisma.MemberWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.MemberUpdateToOneWithWhereWithoutPresidingAssembliesInput, Prisma.MemberUpdateWithoutPresidingAssembliesInput>, Prisma.MemberUncheckedUpdateWithoutPresidingAssembliesInput>
+}
+
+export type MemberUpdateOneWithoutIssuingAssembliesNestedInput = {
+  create?: Prisma.XOR<Prisma.MemberCreateWithoutIssuingAssembliesInput, Prisma.MemberUncheckedCreateWithoutIssuingAssembliesInput>
+  connectOrCreate?: Prisma.MemberCreateOrConnectWithoutIssuingAssembliesInput
+  upsert?: Prisma.MemberUpsertWithoutIssuingAssembliesInput
+  disconnect?: Prisma.MemberWhereInput | boolean
+  delete?: Prisma.MemberWhereInput | boolean
+  connect?: Prisma.MemberWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.MemberUpdateToOneWithWhereWithoutIssuingAssembliesInput, Prisma.MemberUpdateWithoutIssuingAssembliesInput>, Prisma.MemberUncheckedUpdateWithoutIssuingAssembliesInput>
+}
+
+export type MemberCreateNestedOneWithoutAssemblySeatsInput = {
+  create?: Prisma.XOR<Prisma.MemberCreateWithoutAssemblySeatsInput, Prisma.MemberUncheckedCreateWithoutAssemblySeatsInput>
+  connectOrCreate?: Prisma.MemberCreateOrConnectWithoutAssemblySeatsInput
+  connect?: Prisma.MemberWhereUniqueInput
+}
+
+export type MemberUpdateOneRequiredWithoutAssemblySeatsNestedInput = {
+  create?: Prisma.XOR<Prisma.MemberCreateWithoutAssemblySeatsInput, Prisma.MemberUncheckedCreateWithoutAssemblySeatsInput>
+  connectOrCreate?: Prisma.MemberCreateOrConnectWithoutAssemblySeatsInput
+  upsert?: Prisma.MemberUpsertWithoutAssemblySeatsInput
+  connect?: Prisma.MemberWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.MemberUpdateToOneWithWhereWithoutAssemblySeatsInput, Prisma.MemberUpdateWithoutAssemblySeatsInput>, Prisma.MemberUncheckedUpdateWithoutAssemblySeatsInput>
+}
+
+export type MemberCreateNestedOneWithoutAttendanceRecordsInput = {
+  create?: Prisma.XOR<Prisma.MemberCreateWithoutAttendanceRecordsInput, Prisma.MemberUncheckedCreateWithoutAttendanceRecordsInput>
+  connectOrCreate?: Prisma.MemberCreateOrConnectWithoutAttendanceRecordsInput
+  connect?: Prisma.MemberWhereUniqueInput
+}
+
+export type MemberUpdateOneRequiredWithoutAttendanceRecordsNestedInput = {
+  create?: Prisma.XOR<Prisma.MemberCreateWithoutAttendanceRecordsInput, Prisma.MemberUncheckedCreateWithoutAttendanceRecordsInput>
+  connectOrCreate?: Prisma.MemberCreateOrConnectWithoutAttendanceRecordsInput
+  upsert?: Prisma.MemberUpsertWithoutAttendanceRecordsInput
+  connect?: Prisma.MemberWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.MemberUpdateToOneWithWhereWithoutAttendanceRecordsInput, Prisma.MemberUpdateWithoutAttendanceRecordsInput>, Prisma.MemberUncheckedUpdateWithoutAttendanceRecordsInput>
+}
+
 export type MemberCreateWithoutAuthAccountsInput = {
   id?: string
   memberId: string
@@ -1032,6 +1279,13 @@ export type MemberCreateWithoutAuthAccountsInput = {
   status: string
   role: string
   country: string
+  nationality?: string | null
+  sex?: string | null
+  cityOfResidence?: string | null
+  idCardType?: string | null
+  idCardNumber?: string | null
+  maritalStatus?: string | null
+  occupation?: string | null
   countryInitiator?: string | null
   journeyStartedYear?: number | null
   formalApprovalYear?: number | null
@@ -1055,6 +1309,10 @@ export type MemberCreateWithoutAuthAccountsInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutMemberInput
   conversationAudits?: Prisma.ConversationAuditCreateNestedManyWithoutActorInput
   messageReports?: Prisma.MessageReportCreateNestedManyWithoutReportedByInput
+  assemblySeats?: Prisma.AssemblyMemberCreateNestedManyWithoutMemberInput
+  attendanceRecords?: Prisma.AssemblyAttendanceCreateNestedManyWithoutMemberInput
+  presidingAssemblies?: Prisma.AssemblyCreateNestedManyWithoutPresidingMemberInput
+  issuingAssemblies?: Prisma.AssemblyCreateNestedManyWithoutIssuingMemberInput
 }
 
 export type MemberUncheckedCreateWithoutAuthAccountsInput = {
@@ -1068,6 +1326,13 @@ export type MemberUncheckedCreateWithoutAuthAccountsInput = {
   status: string
   role: string
   country: string
+  nationality?: string | null
+  sex?: string | null
+  cityOfResidence?: string | null
+  idCardType?: string | null
+  idCardNumber?: string | null
+  maritalStatus?: string | null
+  occupation?: string | null
   countryInitiator?: string | null
   journeyStartedYear?: number | null
   formalApprovalYear?: number | null
@@ -1091,6 +1356,10 @@ export type MemberUncheckedCreateWithoutAuthAccountsInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutMemberInput
   conversationAudits?: Prisma.ConversationAuditUncheckedCreateNestedManyWithoutActorInput
   messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReportedByInput
+  assemblySeats?: Prisma.AssemblyMemberUncheckedCreateNestedManyWithoutMemberInput
+  attendanceRecords?: Prisma.AssemblyAttendanceUncheckedCreateNestedManyWithoutMemberInput
+  presidingAssemblies?: Prisma.AssemblyUncheckedCreateNestedManyWithoutPresidingMemberInput
+  issuingAssemblies?: Prisma.AssemblyUncheckedCreateNestedManyWithoutIssuingMemberInput
 }
 
 export type MemberCreateOrConnectWithoutAuthAccountsInput = {
@@ -1120,6 +1389,13 @@ export type MemberUpdateWithoutAuthAccountsInput = {
   status?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.StringFieldUpdateOperationsInput | string
   country?: Prisma.StringFieldUpdateOperationsInput | string
+  nationality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sex?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cityOfResidence?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idCardType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idCardNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  maritalStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  occupation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   countryInitiator?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   journeyStartedYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   formalApprovalYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1143,6 +1419,10 @@ export type MemberUpdateWithoutAuthAccountsInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutMemberNestedInput
   conversationAudits?: Prisma.ConversationAuditUpdateManyWithoutActorNestedInput
   messageReports?: Prisma.MessageReportUpdateManyWithoutReportedByNestedInput
+  assemblySeats?: Prisma.AssemblyMemberUpdateManyWithoutMemberNestedInput
+  attendanceRecords?: Prisma.AssemblyAttendanceUpdateManyWithoutMemberNestedInput
+  presidingAssemblies?: Prisma.AssemblyUpdateManyWithoutPresidingMemberNestedInput
+  issuingAssemblies?: Prisma.AssemblyUpdateManyWithoutIssuingMemberNestedInput
 }
 
 export type MemberUncheckedUpdateWithoutAuthAccountsInput = {
@@ -1156,6 +1436,13 @@ export type MemberUncheckedUpdateWithoutAuthAccountsInput = {
   status?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.StringFieldUpdateOperationsInput | string
   country?: Prisma.StringFieldUpdateOperationsInput | string
+  nationality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sex?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cityOfResidence?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idCardType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idCardNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  maritalStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  occupation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   countryInitiator?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   journeyStartedYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   formalApprovalYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1179,6 +1466,10 @@ export type MemberUncheckedUpdateWithoutAuthAccountsInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutMemberNestedInput
   conversationAudits?: Prisma.ConversationAuditUncheckedUpdateManyWithoutActorNestedInput
   messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReportedByNestedInput
+  assemblySeats?: Prisma.AssemblyMemberUncheckedUpdateManyWithoutMemberNestedInput
+  attendanceRecords?: Prisma.AssemblyAttendanceUncheckedUpdateManyWithoutMemberNestedInput
+  presidingAssemblies?: Prisma.AssemblyUncheckedUpdateManyWithoutPresidingMemberNestedInput
+  issuingAssemblies?: Prisma.AssemblyUncheckedUpdateManyWithoutIssuingMemberNestedInput
 }
 
 export type MemberCreateWithoutConversationCreateInput = {
@@ -1192,6 +1483,13 @@ export type MemberCreateWithoutConversationCreateInput = {
   status: string
   role: string
   country: string
+  nationality?: string | null
+  sex?: string | null
+  cityOfResidence?: string | null
+  idCardType?: string | null
+  idCardNumber?: string | null
+  maritalStatus?: string | null
+  occupation?: string | null
   countryInitiator?: string | null
   journeyStartedYear?: number | null
   formalApprovalYear?: number | null
@@ -1215,6 +1513,10 @@ export type MemberCreateWithoutConversationCreateInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutMemberInput
   conversationAudits?: Prisma.ConversationAuditCreateNestedManyWithoutActorInput
   messageReports?: Prisma.MessageReportCreateNestedManyWithoutReportedByInput
+  assemblySeats?: Prisma.AssemblyMemberCreateNestedManyWithoutMemberInput
+  attendanceRecords?: Prisma.AssemblyAttendanceCreateNestedManyWithoutMemberInput
+  presidingAssemblies?: Prisma.AssemblyCreateNestedManyWithoutPresidingMemberInput
+  issuingAssemblies?: Prisma.AssemblyCreateNestedManyWithoutIssuingMemberInput
 }
 
 export type MemberUncheckedCreateWithoutConversationCreateInput = {
@@ -1228,6 +1530,13 @@ export type MemberUncheckedCreateWithoutConversationCreateInput = {
   status: string
   role: string
   country: string
+  nationality?: string | null
+  sex?: string | null
+  cityOfResidence?: string | null
+  idCardType?: string | null
+  idCardNumber?: string | null
+  maritalStatus?: string | null
+  occupation?: string | null
   countryInitiator?: string | null
   journeyStartedYear?: number | null
   formalApprovalYear?: number | null
@@ -1251,6 +1560,10 @@ export type MemberUncheckedCreateWithoutConversationCreateInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutMemberInput
   conversationAudits?: Prisma.ConversationAuditUncheckedCreateNestedManyWithoutActorInput
   messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReportedByInput
+  assemblySeats?: Prisma.AssemblyMemberUncheckedCreateNestedManyWithoutMemberInput
+  attendanceRecords?: Prisma.AssemblyAttendanceUncheckedCreateNestedManyWithoutMemberInput
+  presidingAssemblies?: Prisma.AssemblyUncheckedCreateNestedManyWithoutPresidingMemberInput
+  issuingAssemblies?: Prisma.AssemblyUncheckedCreateNestedManyWithoutIssuingMemberInput
 }
 
 export type MemberCreateOrConnectWithoutConversationCreateInput = {
@@ -1280,6 +1593,13 @@ export type MemberUpdateWithoutConversationCreateInput = {
   status?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.StringFieldUpdateOperationsInput | string
   country?: Prisma.StringFieldUpdateOperationsInput | string
+  nationality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sex?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cityOfResidence?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idCardType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idCardNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  maritalStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  occupation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   countryInitiator?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   journeyStartedYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   formalApprovalYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1303,6 +1623,10 @@ export type MemberUpdateWithoutConversationCreateInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutMemberNestedInput
   conversationAudits?: Prisma.ConversationAuditUpdateManyWithoutActorNestedInput
   messageReports?: Prisma.MessageReportUpdateManyWithoutReportedByNestedInput
+  assemblySeats?: Prisma.AssemblyMemberUpdateManyWithoutMemberNestedInput
+  attendanceRecords?: Prisma.AssemblyAttendanceUpdateManyWithoutMemberNestedInput
+  presidingAssemblies?: Prisma.AssemblyUpdateManyWithoutPresidingMemberNestedInput
+  issuingAssemblies?: Prisma.AssemblyUpdateManyWithoutIssuingMemberNestedInput
 }
 
 export type MemberUncheckedUpdateWithoutConversationCreateInput = {
@@ -1316,6 +1640,13 @@ export type MemberUncheckedUpdateWithoutConversationCreateInput = {
   status?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.StringFieldUpdateOperationsInput | string
   country?: Prisma.StringFieldUpdateOperationsInput | string
+  nationality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sex?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cityOfResidence?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idCardType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idCardNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  maritalStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  occupation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   countryInitiator?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   journeyStartedYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   formalApprovalYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1339,6 +1670,10 @@ export type MemberUncheckedUpdateWithoutConversationCreateInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutMemberNestedInput
   conversationAudits?: Prisma.ConversationAuditUncheckedUpdateManyWithoutActorNestedInput
   messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReportedByNestedInput
+  assemblySeats?: Prisma.AssemblyMemberUncheckedUpdateManyWithoutMemberNestedInput
+  attendanceRecords?: Prisma.AssemblyAttendanceUncheckedUpdateManyWithoutMemberNestedInput
+  presidingAssemblies?: Prisma.AssemblyUncheckedUpdateManyWithoutPresidingMemberNestedInput
+  issuingAssemblies?: Prisma.AssemblyUncheckedUpdateManyWithoutIssuingMemberNestedInput
 }
 
 export type MemberCreateWithoutConversationMembersInput = {
@@ -1352,6 +1687,13 @@ export type MemberCreateWithoutConversationMembersInput = {
   status: string
   role: string
   country: string
+  nationality?: string | null
+  sex?: string | null
+  cityOfResidence?: string | null
+  idCardType?: string | null
+  idCardNumber?: string | null
+  maritalStatus?: string | null
+  occupation?: string | null
   countryInitiator?: string | null
   journeyStartedYear?: number | null
   formalApprovalYear?: number | null
@@ -1375,6 +1717,10 @@ export type MemberCreateWithoutConversationMembersInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutMemberInput
   conversationAudits?: Prisma.ConversationAuditCreateNestedManyWithoutActorInput
   messageReports?: Prisma.MessageReportCreateNestedManyWithoutReportedByInput
+  assemblySeats?: Prisma.AssemblyMemberCreateNestedManyWithoutMemberInput
+  attendanceRecords?: Prisma.AssemblyAttendanceCreateNestedManyWithoutMemberInput
+  presidingAssemblies?: Prisma.AssemblyCreateNestedManyWithoutPresidingMemberInput
+  issuingAssemblies?: Prisma.AssemblyCreateNestedManyWithoutIssuingMemberInput
 }
 
 export type MemberUncheckedCreateWithoutConversationMembersInput = {
@@ -1388,6 +1734,13 @@ export type MemberUncheckedCreateWithoutConversationMembersInput = {
   status: string
   role: string
   country: string
+  nationality?: string | null
+  sex?: string | null
+  cityOfResidence?: string | null
+  idCardType?: string | null
+  idCardNumber?: string | null
+  maritalStatus?: string | null
+  occupation?: string | null
   countryInitiator?: string | null
   journeyStartedYear?: number | null
   formalApprovalYear?: number | null
@@ -1411,6 +1764,10 @@ export type MemberUncheckedCreateWithoutConversationMembersInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutMemberInput
   conversationAudits?: Prisma.ConversationAuditUncheckedCreateNestedManyWithoutActorInput
   messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReportedByInput
+  assemblySeats?: Prisma.AssemblyMemberUncheckedCreateNestedManyWithoutMemberInput
+  attendanceRecords?: Prisma.AssemblyAttendanceUncheckedCreateNestedManyWithoutMemberInput
+  presidingAssemblies?: Prisma.AssemblyUncheckedCreateNestedManyWithoutPresidingMemberInput
+  issuingAssemblies?: Prisma.AssemblyUncheckedCreateNestedManyWithoutIssuingMemberInput
 }
 
 export type MemberCreateOrConnectWithoutConversationMembersInput = {
@@ -1440,6 +1797,13 @@ export type MemberUpdateWithoutConversationMembersInput = {
   status?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.StringFieldUpdateOperationsInput | string
   country?: Prisma.StringFieldUpdateOperationsInput | string
+  nationality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sex?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cityOfResidence?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idCardType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idCardNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  maritalStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  occupation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   countryInitiator?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   journeyStartedYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   formalApprovalYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1463,6 +1827,10 @@ export type MemberUpdateWithoutConversationMembersInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutMemberNestedInput
   conversationAudits?: Prisma.ConversationAuditUpdateManyWithoutActorNestedInput
   messageReports?: Prisma.MessageReportUpdateManyWithoutReportedByNestedInput
+  assemblySeats?: Prisma.AssemblyMemberUpdateManyWithoutMemberNestedInput
+  attendanceRecords?: Prisma.AssemblyAttendanceUpdateManyWithoutMemberNestedInput
+  presidingAssemblies?: Prisma.AssemblyUpdateManyWithoutPresidingMemberNestedInput
+  issuingAssemblies?: Prisma.AssemblyUpdateManyWithoutIssuingMemberNestedInput
 }
 
 export type MemberUncheckedUpdateWithoutConversationMembersInput = {
@@ -1476,6 +1844,13 @@ export type MemberUncheckedUpdateWithoutConversationMembersInput = {
   status?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.StringFieldUpdateOperationsInput | string
   country?: Prisma.StringFieldUpdateOperationsInput | string
+  nationality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sex?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cityOfResidence?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idCardType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idCardNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  maritalStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  occupation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   countryInitiator?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   journeyStartedYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   formalApprovalYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1499,6 +1874,10 @@ export type MemberUncheckedUpdateWithoutConversationMembersInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutMemberNestedInput
   conversationAudits?: Prisma.ConversationAuditUncheckedUpdateManyWithoutActorNestedInput
   messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReportedByNestedInput
+  assemblySeats?: Prisma.AssemblyMemberUncheckedUpdateManyWithoutMemberNestedInput
+  attendanceRecords?: Prisma.AssemblyAttendanceUncheckedUpdateManyWithoutMemberNestedInput
+  presidingAssemblies?: Prisma.AssemblyUncheckedUpdateManyWithoutPresidingMemberNestedInput
+  issuingAssemblies?: Prisma.AssemblyUncheckedUpdateManyWithoutIssuingMemberNestedInput
 }
 
 export type MemberCreateWithoutSentMessagesInput = {
@@ -1512,6 +1891,13 @@ export type MemberCreateWithoutSentMessagesInput = {
   status: string
   role: string
   country: string
+  nationality?: string | null
+  sex?: string | null
+  cityOfResidence?: string | null
+  idCardType?: string | null
+  idCardNumber?: string | null
+  maritalStatus?: string | null
+  occupation?: string | null
   countryInitiator?: string | null
   journeyStartedYear?: number | null
   formalApprovalYear?: number | null
@@ -1535,6 +1921,10 @@ export type MemberCreateWithoutSentMessagesInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutMemberInput
   conversationAudits?: Prisma.ConversationAuditCreateNestedManyWithoutActorInput
   messageReports?: Prisma.MessageReportCreateNestedManyWithoutReportedByInput
+  assemblySeats?: Prisma.AssemblyMemberCreateNestedManyWithoutMemberInput
+  attendanceRecords?: Prisma.AssemblyAttendanceCreateNestedManyWithoutMemberInput
+  presidingAssemblies?: Prisma.AssemblyCreateNestedManyWithoutPresidingMemberInput
+  issuingAssemblies?: Prisma.AssemblyCreateNestedManyWithoutIssuingMemberInput
 }
 
 export type MemberUncheckedCreateWithoutSentMessagesInput = {
@@ -1548,6 +1938,13 @@ export type MemberUncheckedCreateWithoutSentMessagesInput = {
   status: string
   role: string
   country: string
+  nationality?: string | null
+  sex?: string | null
+  cityOfResidence?: string | null
+  idCardType?: string | null
+  idCardNumber?: string | null
+  maritalStatus?: string | null
+  occupation?: string | null
   countryInitiator?: string | null
   journeyStartedYear?: number | null
   formalApprovalYear?: number | null
@@ -1571,6 +1968,10 @@ export type MemberUncheckedCreateWithoutSentMessagesInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutMemberInput
   conversationAudits?: Prisma.ConversationAuditUncheckedCreateNestedManyWithoutActorInput
   messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReportedByInput
+  assemblySeats?: Prisma.AssemblyMemberUncheckedCreateNestedManyWithoutMemberInput
+  attendanceRecords?: Prisma.AssemblyAttendanceUncheckedCreateNestedManyWithoutMemberInput
+  presidingAssemblies?: Prisma.AssemblyUncheckedCreateNestedManyWithoutPresidingMemberInput
+  issuingAssemblies?: Prisma.AssemblyUncheckedCreateNestedManyWithoutIssuingMemberInput
 }
 
 export type MemberCreateOrConnectWithoutSentMessagesInput = {
@@ -1600,6 +2001,13 @@ export type MemberUpdateWithoutSentMessagesInput = {
   status?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.StringFieldUpdateOperationsInput | string
   country?: Prisma.StringFieldUpdateOperationsInput | string
+  nationality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sex?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cityOfResidence?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idCardType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idCardNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  maritalStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  occupation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   countryInitiator?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   journeyStartedYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   formalApprovalYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1623,6 +2031,10 @@ export type MemberUpdateWithoutSentMessagesInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutMemberNestedInput
   conversationAudits?: Prisma.ConversationAuditUpdateManyWithoutActorNestedInput
   messageReports?: Prisma.MessageReportUpdateManyWithoutReportedByNestedInput
+  assemblySeats?: Prisma.AssemblyMemberUpdateManyWithoutMemberNestedInput
+  attendanceRecords?: Prisma.AssemblyAttendanceUpdateManyWithoutMemberNestedInput
+  presidingAssemblies?: Prisma.AssemblyUpdateManyWithoutPresidingMemberNestedInput
+  issuingAssemblies?: Prisma.AssemblyUpdateManyWithoutIssuingMemberNestedInput
 }
 
 export type MemberUncheckedUpdateWithoutSentMessagesInput = {
@@ -1636,6 +2048,13 @@ export type MemberUncheckedUpdateWithoutSentMessagesInput = {
   status?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.StringFieldUpdateOperationsInput | string
   country?: Prisma.StringFieldUpdateOperationsInput | string
+  nationality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sex?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cityOfResidence?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idCardType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idCardNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  maritalStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  occupation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   countryInitiator?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   journeyStartedYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   formalApprovalYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1659,6 +2078,10 @@ export type MemberUncheckedUpdateWithoutSentMessagesInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutMemberNestedInput
   conversationAudits?: Prisma.ConversationAuditUncheckedUpdateManyWithoutActorNestedInput
   messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReportedByNestedInput
+  assemblySeats?: Prisma.AssemblyMemberUncheckedUpdateManyWithoutMemberNestedInput
+  attendanceRecords?: Prisma.AssemblyAttendanceUncheckedUpdateManyWithoutMemberNestedInput
+  presidingAssemblies?: Prisma.AssemblyUncheckedUpdateManyWithoutPresidingMemberNestedInput
+  issuingAssemblies?: Prisma.AssemblyUncheckedUpdateManyWithoutIssuingMemberNestedInput
 }
 
 export type MemberCreateWithoutMessageReadsInput = {
@@ -1672,6 +2095,13 @@ export type MemberCreateWithoutMessageReadsInput = {
   status: string
   role: string
   country: string
+  nationality?: string | null
+  sex?: string | null
+  cityOfResidence?: string | null
+  idCardType?: string | null
+  idCardNumber?: string | null
+  maritalStatus?: string | null
+  occupation?: string | null
   countryInitiator?: string | null
   journeyStartedYear?: number | null
   formalApprovalYear?: number | null
@@ -1695,6 +2125,10 @@ export type MemberCreateWithoutMessageReadsInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutMemberInput
   conversationAudits?: Prisma.ConversationAuditCreateNestedManyWithoutActorInput
   messageReports?: Prisma.MessageReportCreateNestedManyWithoutReportedByInput
+  assemblySeats?: Prisma.AssemblyMemberCreateNestedManyWithoutMemberInput
+  attendanceRecords?: Prisma.AssemblyAttendanceCreateNestedManyWithoutMemberInput
+  presidingAssemblies?: Prisma.AssemblyCreateNestedManyWithoutPresidingMemberInput
+  issuingAssemblies?: Prisma.AssemblyCreateNestedManyWithoutIssuingMemberInput
 }
 
 export type MemberUncheckedCreateWithoutMessageReadsInput = {
@@ -1708,6 +2142,13 @@ export type MemberUncheckedCreateWithoutMessageReadsInput = {
   status: string
   role: string
   country: string
+  nationality?: string | null
+  sex?: string | null
+  cityOfResidence?: string | null
+  idCardType?: string | null
+  idCardNumber?: string | null
+  maritalStatus?: string | null
+  occupation?: string | null
   countryInitiator?: string | null
   journeyStartedYear?: number | null
   formalApprovalYear?: number | null
@@ -1731,6 +2172,10 @@ export type MemberUncheckedCreateWithoutMessageReadsInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutMemberInput
   conversationAudits?: Prisma.ConversationAuditUncheckedCreateNestedManyWithoutActorInput
   messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReportedByInput
+  assemblySeats?: Prisma.AssemblyMemberUncheckedCreateNestedManyWithoutMemberInput
+  attendanceRecords?: Prisma.AssemblyAttendanceUncheckedCreateNestedManyWithoutMemberInput
+  presidingAssemblies?: Prisma.AssemblyUncheckedCreateNestedManyWithoutPresidingMemberInput
+  issuingAssemblies?: Prisma.AssemblyUncheckedCreateNestedManyWithoutIssuingMemberInput
 }
 
 export type MemberCreateOrConnectWithoutMessageReadsInput = {
@@ -1760,6 +2205,13 @@ export type MemberUpdateWithoutMessageReadsInput = {
   status?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.StringFieldUpdateOperationsInput | string
   country?: Prisma.StringFieldUpdateOperationsInput | string
+  nationality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sex?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cityOfResidence?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idCardType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idCardNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  maritalStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  occupation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   countryInitiator?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   journeyStartedYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   formalApprovalYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1783,6 +2235,10 @@ export type MemberUpdateWithoutMessageReadsInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutMemberNestedInput
   conversationAudits?: Prisma.ConversationAuditUpdateManyWithoutActorNestedInput
   messageReports?: Prisma.MessageReportUpdateManyWithoutReportedByNestedInput
+  assemblySeats?: Prisma.AssemblyMemberUpdateManyWithoutMemberNestedInput
+  attendanceRecords?: Prisma.AssemblyAttendanceUpdateManyWithoutMemberNestedInput
+  presidingAssemblies?: Prisma.AssemblyUpdateManyWithoutPresidingMemberNestedInput
+  issuingAssemblies?: Prisma.AssemblyUpdateManyWithoutIssuingMemberNestedInput
 }
 
 export type MemberUncheckedUpdateWithoutMessageReadsInput = {
@@ -1796,6 +2252,13 @@ export type MemberUncheckedUpdateWithoutMessageReadsInput = {
   status?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.StringFieldUpdateOperationsInput | string
   country?: Prisma.StringFieldUpdateOperationsInput | string
+  nationality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sex?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cityOfResidence?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idCardType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idCardNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  maritalStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  occupation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   countryInitiator?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   journeyStartedYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   formalApprovalYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1819,6 +2282,10 @@ export type MemberUncheckedUpdateWithoutMessageReadsInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutMemberNestedInput
   conversationAudits?: Prisma.ConversationAuditUncheckedUpdateManyWithoutActorNestedInput
   messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReportedByNestedInput
+  assemblySeats?: Prisma.AssemblyMemberUncheckedUpdateManyWithoutMemberNestedInput
+  attendanceRecords?: Prisma.AssemblyAttendanceUncheckedUpdateManyWithoutMemberNestedInput
+  presidingAssemblies?: Prisma.AssemblyUncheckedUpdateManyWithoutPresidingMemberNestedInput
+  issuingAssemblies?: Prisma.AssemblyUncheckedUpdateManyWithoutIssuingMemberNestedInput
 }
 
 export type MemberCreateWithoutNotificationsInput = {
@@ -1832,6 +2299,13 @@ export type MemberCreateWithoutNotificationsInput = {
   status: string
   role: string
   country: string
+  nationality?: string | null
+  sex?: string | null
+  cityOfResidence?: string | null
+  idCardType?: string | null
+  idCardNumber?: string | null
+  maritalStatus?: string | null
+  occupation?: string | null
   countryInitiator?: string | null
   journeyStartedYear?: number | null
   formalApprovalYear?: number | null
@@ -1855,6 +2329,10 @@ export type MemberCreateWithoutNotificationsInput = {
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutMemberInput
   conversationAudits?: Prisma.ConversationAuditCreateNestedManyWithoutActorInput
   messageReports?: Prisma.MessageReportCreateNestedManyWithoutReportedByInput
+  assemblySeats?: Prisma.AssemblyMemberCreateNestedManyWithoutMemberInput
+  attendanceRecords?: Prisma.AssemblyAttendanceCreateNestedManyWithoutMemberInput
+  presidingAssemblies?: Prisma.AssemblyCreateNestedManyWithoutPresidingMemberInput
+  issuingAssemblies?: Prisma.AssemblyCreateNestedManyWithoutIssuingMemberInput
 }
 
 export type MemberUncheckedCreateWithoutNotificationsInput = {
@@ -1868,6 +2346,13 @@ export type MemberUncheckedCreateWithoutNotificationsInput = {
   status: string
   role: string
   country: string
+  nationality?: string | null
+  sex?: string | null
+  cityOfResidence?: string | null
+  idCardType?: string | null
+  idCardNumber?: string | null
+  maritalStatus?: string | null
+  occupation?: string | null
   countryInitiator?: string | null
   journeyStartedYear?: number | null
   formalApprovalYear?: number | null
@@ -1891,6 +2376,10 @@ export type MemberUncheckedCreateWithoutNotificationsInput = {
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutMemberInput
   conversationAudits?: Prisma.ConversationAuditUncheckedCreateNestedManyWithoutActorInput
   messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReportedByInput
+  assemblySeats?: Prisma.AssemblyMemberUncheckedCreateNestedManyWithoutMemberInput
+  attendanceRecords?: Prisma.AssemblyAttendanceUncheckedCreateNestedManyWithoutMemberInput
+  presidingAssemblies?: Prisma.AssemblyUncheckedCreateNestedManyWithoutPresidingMemberInput
+  issuingAssemblies?: Prisma.AssemblyUncheckedCreateNestedManyWithoutIssuingMemberInput
 }
 
 export type MemberCreateOrConnectWithoutNotificationsInput = {
@@ -1920,6 +2409,13 @@ export type MemberUpdateWithoutNotificationsInput = {
   status?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.StringFieldUpdateOperationsInput | string
   country?: Prisma.StringFieldUpdateOperationsInput | string
+  nationality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sex?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cityOfResidence?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idCardType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idCardNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  maritalStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  occupation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   countryInitiator?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   journeyStartedYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   formalApprovalYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1943,6 +2439,10 @@ export type MemberUpdateWithoutNotificationsInput = {
   messageReads?: Prisma.MessageReadUpdateManyWithoutMemberNestedInput
   conversationAudits?: Prisma.ConversationAuditUpdateManyWithoutActorNestedInput
   messageReports?: Prisma.MessageReportUpdateManyWithoutReportedByNestedInput
+  assemblySeats?: Prisma.AssemblyMemberUpdateManyWithoutMemberNestedInput
+  attendanceRecords?: Prisma.AssemblyAttendanceUpdateManyWithoutMemberNestedInput
+  presidingAssemblies?: Prisma.AssemblyUpdateManyWithoutPresidingMemberNestedInput
+  issuingAssemblies?: Prisma.AssemblyUpdateManyWithoutIssuingMemberNestedInput
 }
 
 export type MemberUncheckedUpdateWithoutNotificationsInput = {
@@ -1956,6 +2456,13 @@ export type MemberUncheckedUpdateWithoutNotificationsInput = {
   status?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.StringFieldUpdateOperationsInput | string
   country?: Prisma.StringFieldUpdateOperationsInput | string
+  nationality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sex?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cityOfResidence?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idCardType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idCardNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  maritalStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  occupation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   countryInitiator?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   journeyStartedYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   formalApprovalYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1979,6 +2486,10 @@ export type MemberUncheckedUpdateWithoutNotificationsInput = {
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutMemberNestedInput
   conversationAudits?: Prisma.ConversationAuditUncheckedUpdateManyWithoutActorNestedInput
   messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReportedByNestedInput
+  assemblySeats?: Prisma.AssemblyMemberUncheckedUpdateManyWithoutMemberNestedInput
+  attendanceRecords?: Prisma.AssemblyAttendanceUncheckedUpdateManyWithoutMemberNestedInput
+  presidingAssemblies?: Prisma.AssemblyUncheckedUpdateManyWithoutPresidingMemberNestedInput
+  issuingAssemblies?: Prisma.AssemblyUncheckedUpdateManyWithoutIssuingMemberNestedInput
 }
 
 export type MemberCreateWithoutConversationAuditsInput = {
@@ -1992,6 +2503,13 @@ export type MemberCreateWithoutConversationAuditsInput = {
   status: string
   role: string
   country: string
+  nationality?: string | null
+  sex?: string | null
+  cityOfResidence?: string | null
+  idCardType?: string | null
+  idCardNumber?: string | null
+  maritalStatus?: string | null
+  occupation?: string | null
   countryInitiator?: string | null
   journeyStartedYear?: number | null
   formalApprovalYear?: number | null
@@ -2015,6 +2533,10 @@ export type MemberCreateWithoutConversationAuditsInput = {
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutMemberInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutMemberInput
   messageReports?: Prisma.MessageReportCreateNestedManyWithoutReportedByInput
+  assemblySeats?: Prisma.AssemblyMemberCreateNestedManyWithoutMemberInput
+  attendanceRecords?: Prisma.AssemblyAttendanceCreateNestedManyWithoutMemberInput
+  presidingAssemblies?: Prisma.AssemblyCreateNestedManyWithoutPresidingMemberInput
+  issuingAssemblies?: Prisma.AssemblyCreateNestedManyWithoutIssuingMemberInput
 }
 
 export type MemberUncheckedCreateWithoutConversationAuditsInput = {
@@ -2028,6 +2550,13 @@ export type MemberUncheckedCreateWithoutConversationAuditsInput = {
   status: string
   role: string
   country: string
+  nationality?: string | null
+  sex?: string | null
+  cityOfResidence?: string | null
+  idCardType?: string | null
+  idCardNumber?: string | null
+  maritalStatus?: string | null
+  occupation?: string | null
   countryInitiator?: string | null
   journeyStartedYear?: number | null
   formalApprovalYear?: number | null
@@ -2051,6 +2580,10 @@ export type MemberUncheckedCreateWithoutConversationAuditsInput = {
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutMemberInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutMemberInput
   messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReportedByInput
+  assemblySeats?: Prisma.AssemblyMemberUncheckedCreateNestedManyWithoutMemberInput
+  attendanceRecords?: Prisma.AssemblyAttendanceUncheckedCreateNestedManyWithoutMemberInput
+  presidingAssemblies?: Prisma.AssemblyUncheckedCreateNestedManyWithoutPresidingMemberInput
+  issuingAssemblies?: Prisma.AssemblyUncheckedCreateNestedManyWithoutIssuingMemberInput
 }
 
 export type MemberCreateOrConnectWithoutConversationAuditsInput = {
@@ -2080,6 +2613,13 @@ export type MemberUpdateWithoutConversationAuditsInput = {
   status?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.StringFieldUpdateOperationsInput | string
   country?: Prisma.StringFieldUpdateOperationsInput | string
+  nationality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sex?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cityOfResidence?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idCardType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idCardNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  maritalStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  occupation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   countryInitiator?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   journeyStartedYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   formalApprovalYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -2103,6 +2643,10 @@ export type MemberUpdateWithoutConversationAuditsInput = {
   messageReads?: Prisma.MessageReadUpdateManyWithoutMemberNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutMemberNestedInput
   messageReports?: Prisma.MessageReportUpdateManyWithoutReportedByNestedInput
+  assemblySeats?: Prisma.AssemblyMemberUpdateManyWithoutMemberNestedInput
+  attendanceRecords?: Prisma.AssemblyAttendanceUpdateManyWithoutMemberNestedInput
+  presidingAssemblies?: Prisma.AssemblyUpdateManyWithoutPresidingMemberNestedInput
+  issuingAssemblies?: Prisma.AssemblyUpdateManyWithoutIssuingMemberNestedInput
 }
 
 export type MemberUncheckedUpdateWithoutConversationAuditsInput = {
@@ -2116,6 +2660,13 @@ export type MemberUncheckedUpdateWithoutConversationAuditsInput = {
   status?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.StringFieldUpdateOperationsInput | string
   country?: Prisma.StringFieldUpdateOperationsInput | string
+  nationality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sex?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cityOfResidence?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idCardType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idCardNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  maritalStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  occupation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   countryInitiator?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   journeyStartedYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   formalApprovalYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -2139,6 +2690,10 @@ export type MemberUncheckedUpdateWithoutConversationAuditsInput = {
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutMemberNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutMemberNestedInput
   messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReportedByNestedInput
+  assemblySeats?: Prisma.AssemblyMemberUncheckedUpdateManyWithoutMemberNestedInput
+  attendanceRecords?: Prisma.AssemblyAttendanceUncheckedUpdateManyWithoutMemberNestedInput
+  presidingAssemblies?: Prisma.AssemblyUncheckedUpdateManyWithoutPresidingMemberNestedInput
+  issuingAssemblies?: Prisma.AssemblyUncheckedUpdateManyWithoutIssuingMemberNestedInput
 }
 
 export type MemberCreateWithoutMessageReportsInput = {
@@ -2152,6 +2707,13 @@ export type MemberCreateWithoutMessageReportsInput = {
   status: string
   role: string
   country: string
+  nationality?: string | null
+  sex?: string | null
+  cityOfResidence?: string | null
+  idCardType?: string | null
+  idCardNumber?: string | null
+  maritalStatus?: string | null
+  occupation?: string | null
   countryInitiator?: string | null
   journeyStartedYear?: number | null
   formalApprovalYear?: number | null
@@ -2175,6 +2737,10 @@ export type MemberCreateWithoutMessageReportsInput = {
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutMemberInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutMemberInput
   conversationAudits?: Prisma.ConversationAuditCreateNestedManyWithoutActorInput
+  assemblySeats?: Prisma.AssemblyMemberCreateNestedManyWithoutMemberInput
+  attendanceRecords?: Prisma.AssemblyAttendanceCreateNestedManyWithoutMemberInput
+  presidingAssemblies?: Prisma.AssemblyCreateNestedManyWithoutPresidingMemberInput
+  issuingAssemblies?: Prisma.AssemblyCreateNestedManyWithoutIssuingMemberInput
 }
 
 export type MemberUncheckedCreateWithoutMessageReportsInput = {
@@ -2188,6 +2754,13 @@ export type MemberUncheckedCreateWithoutMessageReportsInput = {
   status: string
   role: string
   country: string
+  nationality?: string | null
+  sex?: string | null
+  cityOfResidence?: string | null
+  idCardType?: string | null
+  idCardNumber?: string | null
+  maritalStatus?: string | null
+  occupation?: string | null
   countryInitiator?: string | null
   journeyStartedYear?: number | null
   formalApprovalYear?: number | null
@@ -2211,6 +2784,10 @@ export type MemberUncheckedCreateWithoutMessageReportsInput = {
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutMemberInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutMemberInput
   conversationAudits?: Prisma.ConversationAuditUncheckedCreateNestedManyWithoutActorInput
+  assemblySeats?: Prisma.AssemblyMemberUncheckedCreateNestedManyWithoutMemberInput
+  attendanceRecords?: Prisma.AssemblyAttendanceUncheckedCreateNestedManyWithoutMemberInput
+  presidingAssemblies?: Prisma.AssemblyUncheckedCreateNestedManyWithoutPresidingMemberInput
+  issuingAssemblies?: Prisma.AssemblyUncheckedCreateNestedManyWithoutIssuingMemberInput
 }
 
 export type MemberCreateOrConnectWithoutMessageReportsInput = {
@@ -2240,6 +2817,13 @@ export type MemberUpdateWithoutMessageReportsInput = {
   status?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.StringFieldUpdateOperationsInput | string
   country?: Prisma.StringFieldUpdateOperationsInput | string
+  nationality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sex?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cityOfResidence?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idCardType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idCardNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  maritalStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  occupation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   countryInitiator?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   journeyStartedYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   formalApprovalYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -2263,6 +2847,10 @@ export type MemberUpdateWithoutMessageReportsInput = {
   messageReads?: Prisma.MessageReadUpdateManyWithoutMemberNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutMemberNestedInput
   conversationAudits?: Prisma.ConversationAuditUpdateManyWithoutActorNestedInput
+  assemblySeats?: Prisma.AssemblyMemberUpdateManyWithoutMemberNestedInput
+  attendanceRecords?: Prisma.AssemblyAttendanceUpdateManyWithoutMemberNestedInput
+  presidingAssemblies?: Prisma.AssemblyUpdateManyWithoutPresidingMemberNestedInput
+  issuingAssemblies?: Prisma.AssemblyUpdateManyWithoutIssuingMemberNestedInput
 }
 
 export type MemberUncheckedUpdateWithoutMessageReportsInput = {
@@ -2276,6 +2864,13 @@ export type MemberUncheckedUpdateWithoutMessageReportsInput = {
   status?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.StringFieldUpdateOperationsInput | string
   country?: Prisma.StringFieldUpdateOperationsInput | string
+  nationality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sex?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cityOfResidence?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idCardType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idCardNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  maritalStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  occupation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   countryInitiator?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   journeyStartedYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   formalApprovalYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -2299,6 +2894,826 @@ export type MemberUncheckedUpdateWithoutMessageReportsInput = {
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutMemberNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutMemberNestedInput
   conversationAudits?: Prisma.ConversationAuditUncheckedUpdateManyWithoutActorNestedInput
+  assemblySeats?: Prisma.AssemblyMemberUncheckedUpdateManyWithoutMemberNestedInput
+  attendanceRecords?: Prisma.AssemblyAttendanceUncheckedUpdateManyWithoutMemberNestedInput
+  presidingAssemblies?: Prisma.AssemblyUncheckedUpdateManyWithoutPresidingMemberNestedInput
+  issuingAssemblies?: Prisma.AssemblyUncheckedUpdateManyWithoutIssuingMemberNestedInput
+}
+
+export type MemberCreateWithoutPresidingAssembliesInput = {
+  id?: string
+  memberId: string
+  firstName: string
+  middleName?: string | null
+  lastName: string
+  fullName: string
+  membershipType: string
+  status: string
+  role: string
+  country: string
+  nationality?: string | null
+  sex?: string | null
+  cityOfResidence?: string | null
+  idCardType?: string | null
+  idCardNumber?: string | null
+  maritalStatus?: string | null
+  occupation?: string | null
+  countryInitiator?: string | null
+  journeyStartedYear?: number | null
+  formalApprovalYear?: number | null
+  fullMembershipYear?: number | null
+  initiationDate?: Date | string | null
+  prefecture?: string | null
+  directorate?: string | null
+  minervalAssembly?: string | null
+  cell?: string | null
+  insinuatorName?: string | null
+  email?: string | null
+  phone?: string | null
+  address?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  lastActiveAt?: Date | string | null
+  authAccounts?: Prisma.AuthAccountCreateNestedManyWithoutMemberInput
+  conversationCreate?: Prisma.ConversationCreateNestedManyWithoutCreatedByMemberInput
+  conversationMembers?: Prisma.ConversationMemberCreateNestedManyWithoutMemberInput
+  sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  messageReads?: Prisma.MessageReadCreateNestedManyWithoutMemberInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutMemberInput
+  conversationAudits?: Prisma.ConversationAuditCreateNestedManyWithoutActorInput
+  messageReports?: Prisma.MessageReportCreateNestedManyWithoutReportedByInput
+  assemblySeats?: Prisma.AssemblyMemberCreateNestedManyWithoutMemberInput
+  attendanceRecords?: Prisma.AssemblyAttendanceCreateNestedManyWithoutMemberInput
+  issuingAssemblies?: Prisma.AssemblyCreateNestedManyWithoutIssuingMemberInput
+}
+
+export type MemberUncheckedCreateWithoutPresidingAssembliesInput = {
+  id?: string
+  memberId: string
+  firstName: string
+  middleName?: string | null
+  lastName: string
+  fullName: string
+  membershipType: string
+  status: string
+  role: string
+  country: string
+  nationality?: string | null
+  sex?: string | null
+  cityOfResidence?: string | null
+  idCardType?: string | null
+  idCardNumber?: string | null
+  maritalStatus?: string | null
+  occupation?: string | null
+  countryInitiator?: string | null
+  journeyStartedYear?: number | null
+  formalApprovalYear?: number | null
+  fullMembershipYear?: number | null
+  initiationDate?: Date | string | null
+  prefecture?: string | null
+  directorate?: string | null
+  minervalAssembly?: string | null
+  cell?: string | null
+  insinuatorName?: string | null
+  email?: string | null
+  phone?: string | null
+  address?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  lastActiveAt?: Date | string | null
+  authAccounts?: Prisma.AuthAccountUncheckedCreateNestedManyWithoutMemberInput
+  conversationCreate?: Prisma.ConversationUncheckedCreateNestedManyWithoutCreatedByMemberInput
+  conversationMembers?: Prisma.ConversationMemberUncheckedCreateNestedManyWithoutMemberInput
+  sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutMemberInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutMemberInput
+  conversationAudits?: Prisma.ConversationAuditUncheckedCreateNestedManyWithoutActorInput
+  messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReportedByInput
+  assemblySeats?: Prisma.AssemblyMemberUncheckedCreateNestedManyWithoutMemberInput
+  attendanceRecords?: Prisma.AssemblyAttendanceUncheckedCreateNestedManyWithoutMemberInput
+  issuingAssemblies?: Prisma.AssemblyUncheckedCreateNestedManyWithoutIssuingMemberInput
+}
+
+export type MemberCreateOrConnectWithoutPresidingAssembliesInput = {
+  where: Prisma.MemberWhereUniqueInput
+  create: Prisma.XOR<Prisma.MemberCreateWithoutPresidingAssembliesInput, Prisma.MemberUncheckedCreateWithoutPresidingAssembliesInput>
+}
+
+export type MemberCreateWithoutIssuingAssembliesInput = {
+  id?: string
+  memberId: string
+  firstName: string
+  middleName?: string | null
+  lastName: string
+  fullName: string
+  membershipType: string
+  status: string
+  role: string
+  country: string
+  nationality?: string | null
+  sex?: string | null
+  cityOfResidence?: string | null
+  idCardType?: string | null
+  idCardNumber?: string | null
+  maritalStatus?: string | null
+  occupation?: string | null
+  countryInitiator?: string | null
+  journeyStartedYear?: number | null
+  formalApprovalYear?: number | null
+  fullMembershipYear?: number | null
+  initiationDate?: Date | string | null
+  prefecture?: string | null
+  directorate?: string | null
+  minervalAssembly?: string | null
+  cell?: string | null
+  insinuatorName?: string | null
+  email?: string | null
+  phone?: string | null
+  address?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  lastActiveAt?: Date | string | null
+  authAccounts?: Prisma.AuthAccountCreateNestedManyWithoutMemberInput
+  conversationCreate?: Prisma.ConversationCreateNestedManyWithoutCreatedByMemberInput
+  conversationMembers?: Prisma.ConversationMemberCreateNestedManyWithoutMemberInput
+  sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  messageReads?: Prisma.MessageReadCreateNestedManyWithoutMemberInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutMemberInput
+  conversationAudits?: Prisma.ConversationAuditCreateNestedManyWithoutActorInput
+  messageReports?: Prisma.MessageReportCreateNestedManyWithoutReportedByInput
+  assemblySeats?: Prisma.AssemblyMemberCreateNestedManyWithoutMemberInput
+  attendanceRecords?: Prisma.AssemblyAttendanceCreateNestedManyWithoutMemberInput
+  presidingAssemblies?: Prisma.AssemblyCreateNestedManyWithoutPresidingMemberInput
+}
+
+export type MemberUncheckedCreateWithoutIssuingAssembliesInput = {
+  id?: string
+  memberId: string
+  firstName: string
+  middleName?: string | null
+  lastName: string
+  fullName: string
+  membershipType: string
+  status: string
+  role: string
+  country: string
+  nationality?: string | null
+  sex?: string | null
+  cityOfResidence?: string | null
+  idCardType?: string | null
+  idCardNumber?: string | null
+  maritalStatus?: string | null
+  occupation?: string | null
+  countryInitiator?: string | null
+  journeyStartedYear?: number | null
+  formalApprovalYear?: number | null
+  fullMembershipYear?: number | null
+  initiationDate?: Date | string | null
+  prefecture?: string | null
+  directorate?: string | null
+  minervalAssembly?: string | null
+  cell?: string | null
+  insinuatorName?: string | null
+  email?: string | null
+  phone?: string | null
+  address?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  lastActiveAt?: Date | string | null
+  authAccounts?: Prisma.AuthAccountUncheckedCreateNestedManyWithoutMemberInput
+  conversationCreate?: Prisma.ConversationUncheckedCreateNestedManyWithoutCreatedByMemberInput
+  conversationMembers?: Prisma.ConversationMemberUncheckedCreateNestedManyWithoutMemberInput
+  sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutMemberInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutMemberInput
+  conversationAudits?: Prisma.ConversationAuditUncheckedCreateNestedManyWithoutActorInput
+  messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReportedByInput
+  assemblySeats?: Prisma.AssemblyMemberUncheckedCreateNestedManyWithoutMemberInput
+  attendanceRecords?: Prisma.AssemblyAttendanceUncheckedCreateNestedManyWithoutMemberInput
+  presidingAssemblies?: Prisma.AssemblyUncheckedCreateNestedManyWithoutPresidingMemberInput
+}
+
+export type MemberCreateOrConnectWithoutIssuingAssembliesInput = {
+  where: Prisma.MemberWhereUniqueInput
+  create: Prisma.XOR<Prisma.MemberCreateWithoutIssuingAssembliesInput, Prisma.MemberUncheckedCreateWithoutIssuingAssembliesInput>
+}
+
+export type MemberUpsertWithoutPresidingAssembliesInput = {
+  update: Prisma.XOR<Prisma.MemberUpdateWithoutPresidingAssembliesInput, Prisma.MemberUncheckedUpdateWithoutPresidingAssembliesInput>
+  create: Prisma.XOR<Prisma.MemberCreateWithoutPresidingAssembliesInput, Prisma.MemberUncheckedCreateWithoutPresidingAssembliesInput>
+  where?: Prisma.MemberWhereInput
+}
+
+export type MemberUpdateToOneWithWhereWithoutPresidingAssembliesInput = {
+  where?: Prisma.MemberWhereInput
+  data: Prisma.XOR<Prisma.MemberUpdateWithoutPresidingAssembliesInput, Prisma.MemberUncheckedUpdateWithoutPresidingAssembliesInput>
+}
+
+export type MemberUpdateWithoutPresidingAssembliesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  memberId?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  middleName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  membershipType?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  nationality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sex?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cityOfResidence?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idCardType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idCardNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  maritalStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  occupation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  countryInitiator?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  journeyStartedYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  formalApprovalYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  fullMembershipYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  initiationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  prefecture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  directorate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  minervalAssembly?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cell?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  insinuatorName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  authAccounts?: Prisma.AuthAccountUpdateManyWithoutMemberNestedInput
+  conversationCreate?: Prisma.ConversationUpdateManyWithoutCreatedByMemberNestedInput
+  conversationMembers?: Prisma.ConversationMemberUpdateManyWithoutMemberNestedInput
+  sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  messageReads?: Prisma.MessageReadUpdateManyWithoutMemberNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutMemberNestedInput
+  conversationAudits?: Prisma.ConversationAuditUpdateManyWithoutActorNestedInput
+  messageReports?: Prisma.MessageReportUpdateManyWithoutReportedByNestedInput
+  assemblySeats?: Prisma.AssemblyMemberUpdateManyWithoutMemberNestedInput
+  attendanceRecords?: Prisma.AssemblyAttendanceUpdateManyWithoutMemberNestedInput
+  issuingAssemblies?: Prisma.AssemblyUpdateManyWithoutIssuingMemberNestedInput
+}
+
+export type MemberUncheckedUpdateWithoutPresidingAssembliesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  memberId?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  middleName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  membershipType?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  nationality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sex?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cityOfResidence?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idCardType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idCardNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  maritalStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  occupation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  countryInitiator?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  journeyStartedYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  formalApprovalYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  fullMembershipYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  initiationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  prefecture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  directorate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  minervalAssembly?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cell?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  insinuatorName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  authAccounts?: Prisma.AuthAccountUncheckedUpdateManyWithoutMemberNestedInput
+  conversationCreate?: Prisma.ConversationUncheckedUpdateManyWithoutCreatedByMemberNestedInput
+  conversationMembers?: Prisma.ConversationMemberUncheckedUpdateManyWithoutMemberNestedInput
+  sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutMemberNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutMemberNestedInput
+  conversationAudits?: Prisma.ConversationAuditUncheckedUpdateManyWithoutActorNestedInput
+  messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReportedByNestedInput
+  assemblySeats?: Prisma.AssemblyMemberUncheckedUpdateManyWithoutMemberNestedInput
+  attendanceRecords?: Prisma.AssemblyAttendanceUncheckedUpdateManyWithoutMemberNestedInput
+  issuingAssemblies?: Prisma.AssemblyUncheckedUpdateManyWithoutIssuingMemberNestedInput
+}
+
+export type MemberUpsertWithoutIssuingAssembliesInput = {
+  update: Prisma.XOR<Prisma.MemberUpdateWithoutIssuingAssembliesInput, Prisma.MemberUncheckedUpdateWithoutIssuingAssembliesInput>
+  create: Prisma.XOR<Prisma.MemberCreateWithoutIssuingAssembliesInput, Prisma.MemberUncheckedCreateWithoutIssuingAssembliesInput>
+  where?: Prisma.MemberWhereInput
+}
+
+export type MemberUpdateToOneWithWhereWithoutIssuingAssembliesInput = {
+  where?: Prisma.MemberWhereInput
+  data: Prisma.XOR<Prisma.MemberUpdateWithoutIssuingAssembliesInput, Prisma.MemberUncheckedUpdateWithoutIssuingAssembliesInput>
+}
+
+export type MemberUpdateWithoutIssuingAssembliesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  memberId?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  middleName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  membershipType?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  nationality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sex?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cityOfResidence?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idCardType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idCardNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  maritalStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  occupation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  countryInitiator?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  journeyStartedYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  formalApprovalYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  fullMembershipYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  initiationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  prefecture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  directorate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  minervalAssembly?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cell?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  insinuatorName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  authAccounts?: Prisma.AuthAccountUpdateManyWithoutMemberNestedInput
+  conversationCreate?: Prisma.ConversationUpdateManyWithoutCreatedByMemberNestedInput
+  conversationMembers?: Prisma.ConversationMemberUpdateManyWithoutMemberNestedInput
+  sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  messageReads?: Prisma.MessageReadUpdateManyWithoutMemberNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutMemberNestedInput
+  conversationAudits?: Prisma.ConversationAuditUpdateManyWithoutActorNestedInput
+  messageReports?: Prisma.MessageReportUpdateManyWithoutReportedByNestedInput
+  assemblySeats?: Prisma.AssemblyMemberUpdateManyWithoutMemberNestedInput
+  attendanceRecords?: Prisma.AssemblyAttendanceUpdateManyWithoutMemberNestedInput
+  presidingAssemblies?: Prisma.AssemblyUpdateManyWithoutPresidingMemberNestedInput
+}
+
+export type MemberUncheckedUpdateWithoutIssuingAssembliesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  memberId?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  middleName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  membershipType?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  nationality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sex?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cityOfResidence?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idCardType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idCardNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  maritalStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  occupation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  countryInitiator?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  journeyStartedYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  formalApprovalYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  fullMembershipYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  initiationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  prefecture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  directorate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  minervalAssembly?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cell?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  insinuatorName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  authAccounts?: Prisma.AuthAccountUncheckedUpdateManyWithoutMemberNestedInput
+  conversationCreate?: Prisma.ConversationUncheckedUpdateManyWithoutCreatedByMemberNestedInput
+  conversationMembers?: Prisma.ConversationMemberUncheckedUpdateManyWithoutMemberNestedInput
+  sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutMemberNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutMemberNestedInput
+  conversationAudits?: Prisma.ConversationAuditUncheckedUpdateManyWithoutActorNestedInput
+  messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReportedByNestedInput
+  assemblySeats?: Prisma.AssemblyMemberUncheckedUpdateManyWithoutMemberNestedInput
+  attendanceRecords?: Prisma.AssemblyAttendanceUncheckedUpdateManyWithoutMemberNestedInput
+  presidingAssemblies?: Prisma.AssemblyUncheckedUpdateManyWithoutPresidingMemberNestedInput
+}
+
+export type MemberCreateWithoutAssemblySeatsInput = {
+  id?: string
+  memberId: string
+  firstName: string
+  middleName?: string | null
+  lastName: string
+  fullName: string
+  membershipType: string
+  status: string
+  role: string
+  country: string
+  nationality?: string | null
+  sex?: string | null
+  cityOfResidence?: string | null
+  idCardType?: string | null
+  idCardNumber?: string | null
+  maritalStatus?: string | null
+  occupation?: string | null
+  countryInitiator?: string | null
+  journeyStartedYear?: number | null
+  formalApprovalYear?: number | null
+  fullMembershipYear?: number | null
+  initiationDate?: Date | string | null
+  prefecture?: string | null
+  directorate?: string | null
+  minervalAssembly?: string | null
+  cell?: string | null
+  insinuatorName?: string | null
+  email?: string | null
+  phone?: string | null
+  address?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  lastActiveAt?: Date | string | null
+  authAccounts?: Prisma.AuthAccountCreateNestedManyWithoutMemberInput
+  conversationCreate?: Prisma.ConversationCreateNestedManyWithoutCreatedByMemberInput
+  conversationMembers?: Prisma.ConversationMemberCreateNestedManyWithoutMemberInput
+  sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  messageReads?: Prisma.MessageReadCreateNestedManyWithoutMemberInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutMemberInput
+  conversationAudits?: Prisma.ConversationAuditCreateNestedManyWithoutActorInput
+  messageReports?: Prisma.MessageReportCreateNestedManyWithoutReportedByInput
+  attendanceRecords?: Prisma.AssemblyAttendanceCreateNestedManyWithoutMemberInput
+  presidingAssemblies?: Prisma.AssemblyCreateNestedManyWithoutPresidingMemberInput
+  issuingAssemblies?: Prisma.AssemblyCreateNestedManyWithoutIssuingMemberInput
+}
+
+export type MemberUncheckedCreateWithoutAssemblySeatsInput = {
+  id?: string
+  memberId: string
+  firstName: string
+  middleName?: string | null
+  lastName: string
+  fullName: string
+  membershipType: string
+  status: string
+  role: string
+  country: string
+  nationality?: string | null
+  sex?: string | null
+  cityOfResidence?: string | null
+  idCardType?: string | null
+  idCardNumber?: string | null
+  maritalStatus?: string | null
+  occupation?: string | null
+  countryInitiator?: string | null
+  journeyStartedYear?: number | null
+  formalApprovalYear?: number | null
+  fullMembershipYear?: number | null
+  initiationDate?: Date | string | null
+  prefecture?: string | null
+  directorate?: string | null
+  minervalAssembly?: string | null
+  cell?: string | null
+  insinuatorName?: string | null
+  email?: string | null
+  phone?: string | null
+  address?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  lastActiveAt?: Date | string | null
+  authAccounts?: Prisma.AuthAccountUncheckedCreateNestedManyWithoutMemberInput
+  conversationCreate?: Prisma.ConversationUncheckedCreateNestedManyWithoutCreatedByMemberInput
+  conversationMembers?: Prisma.ConversationMemberUncheckedCreateNestedManyWithoutMemberInput
+  sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutMemberInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutMemberInput
+  conversationAudits?: Prisma.ConversationAuditUncheckedCreateNestedManyWithoutActorInput
+  messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReportedByInput
+  attendanceRecords?: Prisma.AssemblyAttendanceUncheckedCreateNestedManyWithoutMemberInput
+  presidingAssemblies?: Prisma.AssemblyUncheckedCreateNestedManyWithoutPresidingMemberInput
+  issuingAssemblies?: Prisma.AssemblyUncheckedCreateNestedManyWithoutIssuingMemberInput
+}
+
+export type MemberCreateOrConnectWithoutAssemblySeatsInput = {
+  where: Prisma.MemberWhereUniqueInput
+  create: Prisma.XOR<Prisma.MemberCreateWithoutAssemblySeatsInput, Prisma.MemberUncheckedCreateWithoutAssemblySeatsInput>
+}
+
+export type MemberUpsertWithoutAssemblySeatsInput = {
+  update: Prisma.XOR<Prisma.MemberUpdateWithoutAssemblySeatsInput, Prisma.MemberUncheckedUpdateWithoutAssemblySeatsInput>
+  create: Prisma.XOR<Prisma.MemberCreateWithoutAssemblySeatsInput, Prisma.MemberUncheckedCreateWithoutAssemblySeatsInput>
+  where?: Prisma.MemberWhereInput
+}
+
+export type MemberUpdateToOneWithWhereWithoutAssemblySeatsInput = {
+  where?: Prisma.MemberWhereInput
+  data: Prisma.XOR<Prisma.MemberUpdateWithoutAssemblySeatsInput, Prisma.MemberUncheckedUpdateWithoutAssemblySeatsInput>
+}
+
+export type MemberUpdateWithoutAssemblySeatsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  memberId?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  middleName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  membershipType?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  nationality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sex?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cityOfResidence?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idCardType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idCardNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  maritalStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  occupation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  countryInitiator?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  journeyStartedYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  formalApprovalYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  fullMembershipYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  initiationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  prefecture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  directorate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  minervalAssembly?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cell?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  insinuatorName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  authAccounts?: Prisma.AuthAccountUpdateManyWithoutMemberNestedInput
+  conversationCreate?: Prisma.ConversationUpdateManyWithoutCreatedByMemberNestedInput
+  conversationMembers?: Prisma.ConversationMemberUpdateManyWithoutMemberNestedInput
+  sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  messageReads?: Prisma.MessageReadUpdateManyWithoutMemberNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutMemberNestedInput
+  conversationAudits?: Prisma.ConversationAuditUpdateManyWithoutActorNestedInput
+  messageReports?: Prisma.MessageReportUpdateManyWithoutReportedByNestedInput
+  attendanceRecords?: Prisma.AssemblyAttendanceUpdateManyWithoutMemberNestedInput
+  presidingAssemblies?: Prisma.AssemblyUpdateManyWithoutPresidingMemberNestedInput
+  issuingAssemblies?: Prisma.AssemblyUpdateManyWithoutIssuingMemberNestedInput
+}
+
+export type MemberUncheckedUpdateWithoutAssemblySeatsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  memberId?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  middleName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  membershipType?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  nationality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sex?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cityOfResidence?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idCardType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idCardNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  maritalStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  occupation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  countryInitiator?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  journeyStartedYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  formalApprovalYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  fullMembershipYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  initiationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  prefecture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  directorate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  minervalAssembly?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cell?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  insinuatorName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  authAccounts?: Prisma.AuthAccountUncheckedUpdateManyWithoutMemberNestedInput
+  conversationCreate?: Prisma.ConversationUncheckedUpdateManyWithoutCreatedByMemberNestedInput
+  conversationMembers?: Prisma.ConversationMemberUncheckedUpdateManyWithoutMemberNestedInput
+  sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutMemberNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutMemberNestedInput
+  conversationAudits?: Prisma.ConversationAuditUncheckedUpdateManyWithoutActorNestedInput
+  messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReportedByNestedInput
+  attendanceRecords?: Prisma.AssemblyAttendanceUncheckedUpdateManyWithoutMemberNestedInput
+  presidingAssemblies?: Prisma.AssemblyUncheckedUpdateManyWithoutPresidingMemberNestedInput
+  issuingAssemblies?: Prisma.AssemblyUncheckedUpdateManyWithoutIssuingMemberNestedInput
+}
+
+export type MemberCreateWithoutAttendanceRecordsInput = {
+  id?: string
+  memberId: string
+  firstName: string
+  middleName?: string | null
+  lastName: string
+  fullName: string
+  membershipType: string
+  status: string
+  role: string
+  country: string
+  nationality?: string | null
+  sex?: string | null
+  cityOfResidence?: string | null
+  idCardType?: string | null
+  idCardNumber?: string | null
+  maritalStatus?: string | null
+  occupation?: string | null
+  countryInitiator?: string | null
+  journeyStartedYear?: number | null
+  formalApprovalYear?: number | null
+  fullMembershipYear?: number | null
+  initiationDate?: Date | string | null
+  prefecture?: string | null
+  directorate?: string | null
+  minervalAssembly?: string | null
+  cell?: string | null
+  insinuatorName?: string | null
+  email?: string | null
+  phone?: string | null
+  address?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  lastActiveAt?: Date | string | null
+  authAccounts?: Prisma.AuthAccountCreateNestedManyWithoutMemberInput
+  conversationCreate?: Prisma.ConversationCreateNestedManyWithoutCreatedByMemberInput
+  conversationMembers?: Prisma.ConversationMemberCreateNestedManyWithoutMemberInput
+  sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  messageReads?: Prisma.MessageReadCreateNestedManyWithoutMemberInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutMemberInput
+  conversationAudits?: Prisma.ConversationAuditCreateNestedManyWithoutActorInput
+  messageReports?: Prisma.MessageReportCreateNestedManyWithoutReportedByInput
+  assemblySeats?: Prisma.AssemblyMemberCreateNestedManyWithoutMemberInput
+  presidingAssemblies?: Prisma.AssemblyCreateNestedManyWithoutPresidingMemberInput
+  issuingAssemblies?: Prisma.AssemblyCreateNestedManyWithoutIssuingMemberInput
+}
+
+export type MemberUncheckedCreateWithoutAttendanceRecordsInput = {
+  id?: string
+  memberId: string
+  firstName: string
+  middleName?: string | null
+  lastName: string
+  fullName: string
+  membershipType: string
+  status: string
+  role: string
+  country: string
+  nationality?: string | null
+  sex?: string | null
+  cityOfResidence?: string | null
+  idCardType?: string | null
+  idCardNumber?: string | null
+  maritalStatus?: string | null
+  occupation?: string | null
+  countryInitiator?: string | null
+  journeyStartedYear?: number | null
+  formalApprovalYear?: number | null
+  fullMembershipYear?: number | null
+  initiationDate?: Date | string | null
+  prefecture?: string | null
+  directorate?: string | null
+  minervalAssembly?: string | null
+  cell?: string | null
+  insinuatorName?: string | null
+  email?: string | null
+  phone?: string | null
+  address?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  lastActiveAt?: Date | string | null
+  authAccounts?: Prisma.AuthAccountUncheckedCreateNestedManyWithoutMemberInput
+  conversationCreate?: Prisma.ConversationUncheckedCreateNestedManyWithoutCreatedByMemberInput
+  conversationMembers?: Prisma.ConversationMemberUncheckedCreateNestedManyWithoutMemberInput
+  sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutMemberInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutMemberInput
+  conversationAudits?: Prisma.ConversationAuditUncheckedCreateNestedManyWithoutActorInput
+  messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReportedByInput
+  assemblySeats?: Prisma.AssemblyMemberUncheckedCreateNestedManyWithoutMemberInput
+  presidingAssemblies?: Prisma.AssemblyUncheckedCreateNestedManyWithoutPresidingMemberInput
+  issuingAssemblies?: Prisma.AssemblyUncheckedCreateNestedManyWithoutIssuingMemberInput
+}
+
+export type MemberCreateOrConnectWithoutAttendanceRecordsInput = {
+  where: Prisma.MemberWhereUniqueInput
+  create: Prisma.XOR<Prisma.MemberCreateWithoutAttendanceRecordsInput, Prisma.MemberUncheckedCreateWithoutAttendanceRecordsInput>
+}
+
+export type MemberUpsertWithoutAttendanceRecordsInput = {
+  update: Prisma.XOR<Prisma.MemberUpdateWithoutAttendanceRecordsInput, Prisma.MemberUncheckedUpdateWithoutAttendanceRecordsInput>
+  create: Prisma.XOR<Prisma.MemberCreateWithoutAttendanceRecordsInput, Prisma.MemberUncheckedCreateWithoutAttendanceRecordsInput>
+  where?: Prisma.MemberWhereInput
+}
+
+export type MemberUpdateToOneWithWhereWithoutAttendanceRecordsInput = {
+  where?: Prisma.MemberWhereInput
+  data: Prisma.XOR<Prisma.MemberUpdateWithoutAttendanceRecordsInput, Prisma.MemberUncheckedUpdateWithoutAttendanceRecordsInput>
+}
+
+export type MemberUpdateWithoutAttendanceRecordsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  memberId?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  middleName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  membershipType?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  nationality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sex?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cityOfResidence?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idCardType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idCardNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  maritalStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  occupation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  countryInitiator?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  journeyStartedYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  formalApprovalYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  fullMembershipYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  initiationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  prefecture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  directorate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  minervalAssembly?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cell?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  insinuatorName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  authAccounts?: Prisma.AuthAccountUpdateManyWithoutMemberNestedInput
+  conversationCreate?: Prisma.ConversationUpdateManyWithoutCreatedByMemberNestedInput
+  conversationMembers?: Prisma.ConversationMemberUpdateManyWithoutMemberNestedInput
+  sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  messageReads?: Prisma.MessageReadUpdateManyWithoutMemberNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutMemberNestedInput
+  conversationAudits?: Prisma.ConversationAuditUpdateManyWithoutActorNestedInput
+  messageReports?: Prisma.MessageReportUpdateManyWithoutReportedByNestedInput
+  assemblySeats?: Prisma.AssemblyMemberUpdateManyWithoutMemberNestedInput
+  presidingAssemblies?: Prisma.AssemblyUpdateManyWithoutPresidingMemberNestedInput
+  issuingAssemblies?: Prisma.AssemblyUpdateManyWithoutIssuingMemberNestedInput
+}
+
+export type MemberUncheckedUpdateWithoutAttendanceRecordsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  memberId?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  middleName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  membershipType?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  nationality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sex?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cityOfResidence?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idCardType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idCardNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  maritalStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  occupation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  countryInitiator?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  journeyStartedYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  formalApprovalYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  fullMembershipYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  initiationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  prefecture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  directorate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  minervalAssembly?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cell?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  insinuatorName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  authAccounts?: Prisma.AuthAccountUncheckedUpdateManyWithoutMemberNestedInput
+  conversationCreate?: Prisma.ConversationUncheckedUpdateManyWithoutCreatedByMemberNestedInput
+  conversationMembers?: Prisma.ConversationMemberUncheckedUpdateManyWithoutMemberNestedInput
+  sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutMemberNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutMemberNestedInput
+  conversationAudits?: Prisma.ConversationAuditUncheckedUpdateManyWithoutActorNestedInput
+  messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReportedByNestedInput
+  assemblySeats?: Prisma.AssemblyMemberUncheckedUpdateManyWithoutMemberNestedInput
+  presidingAssemblies?: Prisma.AssemblyUncheckedUpdateManyWithoutPresidingMemberNestedInput
+  issuingAssemblies?: Prisma.AssemblyUncheckedUpdateManyWithoutIssuingMemberNestedInput
 }
 
 
@@ -2315,6 +3730,10 @@ export type MemberCountOutputType = {
   notifications: number
   conversationAudits: number
   messageReports: number
+  assemblySeats: number
+  attendanceRecords: number
+  presidingAssemblies: number
+  issuingAssemblies: number
 }
 
 export type MemberCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2326,6 +3745,10 @@ export type MemberCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions
   notifications?: boolean | MemberCountOutputTypeCountNotificationsArgs
   conversationAudits?: boolean | MemberCountOutputTypeCountConversationAuditsArgs
   messageReports?: boolean | MemberCountOutputTypeCountMessageReportsArgs
+  assemblySeats?: boolean | MemberCountOutputTypeCountAssemblySeatsArgs
+  attendanceRecords?: boolean | MemberCountOutputTypeCountAttendanceRecordsArgs
+  presidingAssemblies?: boolean | MemberCountOutputTypeCountPresidingAssembliesArgs
+  issuingAssemblies?: boolean | MemberCountOutputTypeCountIssuingAssembliesArgs
 }
 
 /**
@@ -2394,6 +3817,34 @@ export type MemberCountOutputTypeCountMessageReportsArgs<ExtArgs extends runtime
   where?: Prisma.MessageReportWhereInput
 }
 
+/**
+ * MemberCountOutputType without action
+ */
+export type MemberCountOutputTypeCountAssemblySeatsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.AssemblyMemberWhereInput
+}
+
+/**
+ * MemberCountOutputType without action
+ */
+export type MemberCountOutputTypeCountAttendanceRecordsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.AssemblyAttendanceWhereInput
+}
+
+/**
+ * MemberCountOutputType without action
+ */
+export type MemberCountOutputTypeCountPresidingAssembliesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.AssemblyWhereInput
+}
+
+/**
+ * MemberCountOutputType without action
+ */
+export type MemberCountOutputTypeCountIssuingAssembliesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.AssemblyWhereInput
+}
+
 
 export type MemberSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -2406,6 +3857,13 @@ export type MemberSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   status?: boolean
   role?: boolean
   country?: boolean
+  nationality?: boolean
+  sex?: boolean
+  cityOfResidence?: boolean
+  idCardType?: boolean
+  idCardNumber?: boolean
+  maritalStatus?: boolean
+  occupation?: boolean
   countryInitiator?: boolean
   journeyStartedYear?: boolean
   formalApprovalYear?: boolean
@@ -2430,6 +3888,10 @@ export type MemberSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   notifications?: boolean | Prisma.Member$notificationsArgs<ExtArgs>
   conversationAudits?: boolean | Prisma.Member$conversationAuditsArgs<ExtArgs>
   messageReports?: boolean | Prisma.Member$messageReportsArgs<ExtArgs>
+  assemblySeats?: boolean | Prisma.Member$assemblySeatsArgs<ExtArgs>
+  attendanceRecords?: boolean | Prisma.Member$attendanceRecordsArgs<ExtArgs>
+  presidingAssemblies?: boolean | Prisma.Member$presidingAssembliesArgs<ExtArgs>
+  issuingAssemblies?: boolean | Prisma.Member$issuingAssembliesArgs<ExtArgs>
   _count?: boolean | Prisma.MemberCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["member"]>
 
@@ -2444,6 +3906,13 @@ export type MemberSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extens
   status?: boolean
   role?: boolean
   country?: boolean
+  nationality?: boolean
+  sex?: boolean
+  cityOfResidence?: boolean
+  idCardType?: boolean
+  idCardNumber?: boolean
+  maritalStatus?: boolean
+  occupation?: boolean
   countryInitiator?: boolean
   journeyStartedYear?: boolean
   formalApprovalYear?: boolean
@@ -2473,6 +3942,13 @@ export type MemberSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extens
   status?: boolean
   role?: boolean
   country?: boolean
+  nationality?: boolean
+  sex?: boolean
+  cityOfResidence?: boolean
+  idCardType?: boolean
+  idCardNumber?: boolean
+  maritalStatus?: boolean
+  occupation?: boolean
   countryInitiator?: boolean
   journeyStartedYear?: boolean
   formalApprovalYear?: boolean
@@ -2502,6 +3978,13 @@ export type MemberSelectScalar = {
   status?: boolean
   role?: boolean
   country?: boolean
+  nationality?: boolean
+  sex?: boolean
+  cityOfResidence?: boolean
+  idCardType?: boolean
+  idCardNumber?: boolean
+  maritalStatus?: boolean
+  occupation?: boolean
   countryInitiator?: boolean
   journeyStartedYear?: boolean
   formalApprovalYear?: boolean
@@ -2520,7 +4003,7 @@ export type MemberSelectScalar = {
   lastActiveAt?: boolean
 }
 
-export type MemberOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "memberId" | "firstName" | "middleName" | "lastName" | "fullName" | "membershipType" | "status" | "role" | "country" | "countryInitiator" | "journeyStartedYear" | "formalApprovalYear" | "fullMembershipYear" | "initiationDate" | "prefecture" | "directorate" | "minervalAssembly" | "cell" | "insinuatorName" | "email" | "phone" | "address" | "createdAt" | "updatedAt" | "lastActiveAt", ExtArgs["result"]["member"]>
+export type MemberOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "memberId" | "firstName" | "middleName" | "lastName" | "fullName" | "membershipType" | "status" | "role" | "country" | "nationality" | "sex" | "cityOfResidence" | "idCardType" | "idCardNumber" | "maritalStatus" | "occupation" | "countryInitiator" | "journeyStartedYear" | "formalApprovalYear" | "fullMembershipYear" | "initiationDate" | "prefecture" | "directorate" | "minervalAssembly" | "cell" | "insinuatorName" | "email" | "phone" | "address" | "createdAt" | "updatedAt" | "lastActiveAt", ExtArgs["result"]["member"]>
 export type MemberInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   authAccounts?: boolean | Prisma.Member$authAccountsArgs<ExtArgs>
   conversationCreate?: boolean | Prisma.Member$conversationCreateArgs<ExtArgs>
@@ -2530,6 +4013,10 @@ export type MemberInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   notifications?: boolean | Prisma.Member$notificationsArgs<ExtArgs>
   conversationAudits?: boolean | Prisma.Member$conversationAuditsArgs<ExtArgs>
   messageReports?: boolean | Prisma.Member$messageReportsArgs<ExtArgs>
+  assemblySeats?: boolean | Prisma.Member$assemblySeatsArgs<ExtArgs>
+  attendanceRecords?: boolean | Prisma.Member$attendanceRecordsArgs<ExtArgs>
+  presidingAssemblies?: boolean | Prisma.Member$presidingAssembliesArgs<ExtArgs>
+  issuingAssemblies?: boolean | Prisma.Member$issuingAssembliesArgs<ExtArgs>
   _count?: boolean | Prisma.MemberCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type MemberIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -2546,6 +4033,10 @@ export type $MemberPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     notifications: Prisma.$NotificationPayload<ExtArgs>[]
     conversationAudits: Prisma.$ConversationAuditPayload<ExtArgs>[]
     messageReports: Prisma.$MessageReportPayload<ExtArgs>[]
+    assemblySeats: Prisma.$AssemblyMemberPayload<ExtArgs>[]
+    attendanceRecords: Prisma.$AssemblyAttendancePayload<ExtArgs>[]
+    presidingAssemblies: Prisma.$AssemblyPayload<ExtArgs>[]
+    issuingAssemblies: Prisma.$AssemblyPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -2576,6 +4067,13 @@ export type $MemberPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
      * Country of record.
      */
     country: string
+    nationality: string | null
+    sex: string | null
+    cityOfResidence: string | null
+    idCardType: string | null
+    idCardNumber: string | null
+    maritalStatus: string | null
+    occupation: string | null
     /**
      * The Country Initiator who brought the member behind the veil.
      */
@@ -3011,6 +4509,10 @@ export interface Prisma__MemberClient<T, Null = never, ExtArgs extends runtime.T
   notifications<T extends Prisma.Member$notificationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Member$notificationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   conversationAudits<T extends Prisma.Member$conversationAuditsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Member$conversationAuditsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ConversationAuditPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   messageReports<T extends Prisma.Member$messageReportsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Member$messageReportsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MessageReportPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  assemblySeats<T extends Prisma.Member$assemblySeatsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Member$assemblySeatsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AssemblyMemberPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  attendanceRecords<T extends Prisma.Member$attendanceRecordsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Member$attendanceRecordsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AssemblyAttendancePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  presidingAssemblies<T extends Prisma.Member$presidingAssembliesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Member$presidingAssembliesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AssemblyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  issuingAssemblies<T extends Prisma.Member$issuingAssembliesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Member$issuingAssembliesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AssemblyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3050,6 +4552,13 @@ export interface MemberFieldRefs {
   readonly status: Prisma.FieldRef<"Member", 'String'>
   readonly role: Prisma.FieldRef<"Member", 'String'>
   readonly country: Prisma.FieldRef<"Member", 'String'>
+  readonly nationality: Prisma.FieldRef<"Member", 'String'>
+  readonly sex: Prisma.FieldRef<"Member", 'String'>
+  readonly cityOfResidence: Prisma.FieldRef<"Member", 'String'>
+  readonly idCardType: Prisma.FieldRef<"Member", 'String'>
+  readonly idCardNumber: Prisma.FieldRef<"Member", 'String'>
+  readonly maritalStatus: Prisma.FieldRef<"Member", 'String'>
+  readonly occupation: Prisma.FieldRef<"Member", 'String'>
   readonly countryInitiator: Prisma.FieldRef<"Member", 'String'>
   readonly journeyStartedYear: Prisma.FieldRef<"Member", 'Int'>
   readonly formalApprovalYear: Prisma.FieldRef<"Member", 'Int'>
@@ -3646,6 +5155,102 @@ export type Member$messageReportsArgs<ExtArgs extends runtime.Types.Extensions.I
   take?: number
   skip?: number
   distinct?: Prisma.MessageReportScalarFieldEnum | Prisma.MessageReportScalarFieldEnum[]
+}
+
+/**
+ * Member.assemblySeats
+ */
+export type Member$assemblySeatsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the AssemblyMember
+   */
+  select?: Prisma.AssemblyMemberSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the AssemblyMember
+   */
+  omit?: Prisma.AssemblyMemberOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AssemblyMemberInclude<ExtArgs> | null
+  where?: Prisma.AssemblyMemberWhereInput
+  orderBy?: Prisma.AssemblyMemberOrderByWithRelationInput | Prisma.AssemblyMemberOrderByWithRelationInput[]
+  cursor?: Prisma.AssemblyMemberWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.AssemblyMemberScalarFieldEnum | Prisma.AssemblyMemberScalarFieldEnum[]
+}
+
+/**
+ * Member.attendanceRecords
+ */
+export type Member$attendanceRecordsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the AssemblyAttendance
+   */
+  select?: Prisma.AssemblyAttendanceSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the AssemblyAttendance
+   */
+  omit?: Prisma.AssemblyAttendanceOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AssemblyAttendanceInclude<ExtArgs> | null
+  where?: Prisma.AssemblyAttendanceWhereInput
+  orderBy?: Prisma.AssemblyAttendanceOrderByWithRelationInput | Prisma.AssemblyAttendanceOrderByWithRelationInput[]
+  cursor?: Prisma.AssemblyAttendanceWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.AssemblyAttendanceScalarFieldEnum | Prisma.AssemblyAttendanceScalarFieldEnum[]
+}
+
+/**
+ * Member.presidingAssemblies
+ */
+export type Member$presidingAssembliesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Assembly
+   */
+  select?: Prisma.AssemblySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Assembly
+   */
+  omit?: Prisma.AssemblyOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AssemblyInclude<ExtArgs> | null
+  where?: Prisma.AssemblyWhereInput
+  orderBy?: Prisma.AssemblyOrderByWithRelationInput | Prisma.AssemblyOrderByWithRelationInput[]
+  cursor?: Prisma.AssemblyWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.AssemblyScalarFieldEnum | Prisma.AssemblyScalarFieldEnum[]
+}
+
+/**
+ * Member.issuingAssemblies
+ */
+export type Member$issuingAssembliesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Assembly
+   */
+  select?: Prisma.AssemblySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Assembly
+   */
+  omit?: Prisma.AssemblyOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AssemblyInclude<ExtArgs> | null
+  where?: Prisma.AssemblyWhereInput
+  orderBy?: Prisma.AssemblyOrderByWithRelationInput | Prisma.AssemblyOrderByWithRelationInput[]
+  cursor?: Prisma.AssemblyWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.AssemblyScalarFieldEnum | Prisma.AssemblyScalarFieldEnum[]
 }
 
 /**

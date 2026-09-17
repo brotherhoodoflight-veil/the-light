@@ -268,7 +268,11 @@ async function main(): Promise<void> {
   expect(after === before, 'database left with only the original membership', `= ${after}`);
 
   const remainingConvs = await prisma.conversation.count();
-  expect(remainingConvs === 0, 'no conversations remain after cleanup', `= ${remainingConvs}`);
+  expect(
+    remainingConvs === baselineConvIds.size,
+    'conversations return to the pre-run baseline after cleanup',
+    `= ${remainingConvs} (baseline ${baselineConvIds.size})`,
+  );
 
   await prisma.$disconnect();
 }

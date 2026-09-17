@@ -47,7 +47,7 @@ export function SessionProvider({
   const logout = useCallback(async () => {
     setLoggedOut(true);
     await fetch('/api/auth/logout', { method: 'POST' }).catch(() => undefined);
-    router.replace('/login');
+    router.replace('/sanctuary/login');
   }, [router]);
 
   const value = useMemo<SessionApi>(() => {
