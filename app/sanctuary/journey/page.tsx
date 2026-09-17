@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { getSessionPayload } from "../../../lib/auth/session-server";
 import { prisma } from "../../../lib/db";
 import VeilEmblem from "../../../components/portal/VeilEmblem";
+import "./journey.css";
 
 export const metadata: Metadata = {
   title: "THE JOURNEY — Brotherhood of Light",
@@ -12,31 +13,70 @@ export const metadata: Metadata = {
 };
 
 const NOT_RECORDED = "NOT RECORDED";
+const NOT_RECORDED_IN_REGISTER = "NOT RECORDED IN THE REGISTER";
 
-function toRegistryDate(value: Date | null | undefined): string {
-  return value ? value.toISOString().slice(0, 10) : NOT_RECORDED;
+const MONTHS = [
+  "JANUARY",
+  "FEBRUARY",
+  "MARCH",
+  "APRIL",
+  "MAY",
+  "JUNE",
+  "JULY",
+  "AUGUST",
+  "SEPTEMBER",
+  "OCTOBER",
+  "NOVEMBER",
+  "DECEMBER",
+];
+
+function toDignifiedDate(value: Date | null | undefined): string {
+  if (!value) return NOT_RECORDED;
+  const day = value.getUTCDate();
+  const month = MONTHS[value.getUTCMonth()] ?? "";
+  const year = value.getUTCFullYear();
+  return `${day} ${month} ${year}`;
 }
 
-function toRegistryYear(value: number | null | undefined): string {
-  return value ? String(value) : NOT_RECORDED;
+function toUpper(value: string | null | undefined): string {
+  return value && value.trim() ? value.toUpperCase() : NOT_RECORDED;
 }
 
-function JourneyRow({
-  label,
-  value,
-}: {
-  label: string;
-  value: string;
-}) {
-  const isEmpty = value === NOT_RECORDED;
+interface JourneyStage {
+  period: string;
+  title: string;
+  status: string;
+  description: string;
+  /** True when the register holds no mark for this stage. */
+  sealed: boolean;
+  /** True for the member's present standing. */
+  current?: boolean;
+  /** An additional recorded detail, when the register holds one. */
+  detail?: string;
+}
+
+function JourneyStageNode({ stage }: { stage: JourneyStage }) {
+  const className = [
+    "sc-journey-stage",
+    stage.sealed ? "sc-journey-stage-veiled" : "",
+    stage.current ? "sc-journey-stage-present" : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
 
   return (
-    <div className="sc-home-register-row">
-      <dt className="sc-home-label">{label}</dt>
-      <dd className={`sc-home-value${isEmpty ? " sc-record-empty" : ""}`}>
-        {value}
-      </dd>
-    </div>
+    <li className={className}>
+      <span className="sc-journey-node" aria-hidden="true" />
+      <div className="sc-journey-stage-head">
+        <span className="sc-journey-period">{stage.period}</span>
+        <h3 className="sc-journey-title">{stage.title}</h3>
+      </div>
+      <span className="sc-journey-status">{stage.status}</span>
+      {stage.detail ? (
+        <span className="sc-journey-detail">{stage.detail}</span>
+      ) : null}
+      <p className="sc-journey-description">{stage.description}</p>
+    </li>
   );
 }
 
@@ -50,16 +90,74 @@ export default async function SanctuaryJourneyPage() {
   const member = await prisma.member.findUnique({
     where: { memberId: session.user.memberId },
     select: {
+      fullName: true,
+      memberId: true,
       journeyStartedYear: true,
       initiationDate: true,
       formalApprovalYear: true,
       fullMembershipYear: true,
+      membershipType: true,
     },
   });
 
   if (!member) {
     redirect("/sanctuary/login");
   }
+
+  const began = member.journeyStartedYear;
+  const approval = member.formalApprovalYear;
+  const full = member.fullMembershipYear;
+  const initiation = member.initiationDate;
+
+  const stages: JourneyStage[] = [
+    {
+      period: began ? String(began) : NOT_RECORDED,
+      title: "THE JOURNEY BEGAN",
+      status: began ? "THE JOURNEY COMMENCED" : NOT_RECORDED_IN_REGISTER,
+      description:
+        "First introduction to the Brotherhood and the beginning of the initiation path.",
+      sealed: began == null,
+      detail: initiation ? `INITIATION — ${toDignifiedDate(initiation)}` : undefined,
+    },
+    {
+      period: began ? `${began + 1}–${began + 3}` : NOT_RECORDED,
+      title: "PERIOD OF PREPARATION",
+      status: began ? "RECORDED" : NOT_RECORDED_IN_REGISTER,
+      description:
+        "Preparation, instruction, observation, and continued development.",
+      sealed: began == null,
+    },
+    {
+      period: began ? `${began + 4}–${began + 6}` : NOT_RECORDED,
+      title: "REVIEW & CONTINUED JOURNEY",
+      status: began ? "RECORDED" : NOT_RECORDED_IN_REGISTER,
+      description:
+        "Continued participation and review of progress, conduct, commitment, and readiness.",
+      sealed: began == null,
+    },
+    {
+      period: approval ? String(approval) : NOT_RECORDED,
+      title: "FORMAL APPROVAL",
+      status: approval ? "APPROVAL RECORDED" : NOT_RECORDED_IN_REGISTER,
+      description: "Formal approval for full Brotherhood membership.",
+      sealed: approval == null,
+    },
+    {
+      period: full ? String(full) : NOT_RECORDED,
+      title: "FULL MEMBERSHIP",
+      status: full ? "ENTERED THE REGISTER" : NOT_RECORDED_IN_REGISTER,
+      description: "Entered into the official registry as a full member.",
+      sealed: full == null,
+    },
+    {
+      period: "THE PRESENT",
+      title: "ACTIVE MEMBERSHIP",
+      status: toUpper(member.membershipType),
+      description: "The member\u2019s present standing in the Order, as the register records it.",
+      sealed: false,
+      current: true,
+    },
+  ];
 
   return (
     <main className="sc-page">
@@ -85,32 +183,44 @@ export default async function SanctuaryJourneyPage() {
           INTO THE LIGHT.
         </p>
 
-        {/* ── The chronological progression ── */}
+        {/* ── Whose passage this is ── */}
+        <p className="sc-journey-member">
+          <span className="sc-journey-member-name">
+            {member.fullName.toUpperCase()}
+          </span>
+          <span className="sc-journey-member-rule" aria-hidden="true" />
+          <span className="sc-journey-member-id">{member.memberId}</span>
+        </p>
+
+        {/* ── The passage ── */}
         <div className="sc-record-section">
           <h2 className="sc-record-heading">THE PASSAGE</h2>
           <div className="sc-record-heading-rule" aria-hidden="true" />
-          <div className="sc-home-register">
-            <div className="sc-home-register-line" aria-hidden="true" />
-            <dl className="sc-home-register-fields">
-              <JourneyRow
-                label="THE JOURNEY BEGAN"
-                value={toRegistryYear(member.journeyStartedYear)}
-              />
-              <JourneyRow
-                label="INITIATION"
-                value={toRegistryDate(member.initiationDate)}
-              />
-              <JourneyRow
-                label="FORMAL APPROVAL"
-                value={toRegistryYear(member.formalApprovalYear)}
-              />
-              <JourneyRow
-                label="FULL MEMBERSHIP"
-                value={toRegistryYear(member.fullMembershipYear)}
-              />
-            </dl>
-            <div className="sc-home-register-line" aria-hidden="true" />
-          </div>
+          <ol className="sc-journey-passage">
+            {stages.map((stage) => (
+              <JourneyStageNode key={stage.title} stage={stage} />
+            ))}
+          </ol>
+        </div>
+
+        {/* ── What remains concealed ── */}
+        <div className="sc-journey-beyond">
+          <VeilEmblem className="sc-journey-beyond-emblem" aria-hidden="true" />
+
+          <p className="sc-journey-beyond-title">WHAT LIES BEYOND</p>
+
+          <div className="sc-journey-beyond-rule" aria-hidden="true" />
+
+          <p className="sc-journey-beyond-text">
+            NOT EVERYTHING THAT REMAINS
+            <br />
+            IS YET RECORDED.
+            <br />
+            <br />
+            THE REGISTER HOLDS WHAT HAS PASSED.
+            <br />
+            THE VEIL HOLDS WHAT HAS NOT YET COME.
+          </p>
         </div>
 
         {/* ── Quiet assurance ── */}

@@ -15,6 +15,7 @@ export default function SanctuaryLoginPage() {
       {/* Concealed light geometry — quiet, intimate, private */}
       <div className="sc-aura" aria-hidden="true" />
       <div className="sc-arch" aria-hidden="true" />
+      <div className="sc-world" aria-hidden="true" />
       <div className="sc-orbit" aria-hidden="true" />
 
       {/* The authentication chamber */}

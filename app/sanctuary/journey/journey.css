@@ -1,0 +1,445 @@
+/* ════════════════════════════════════════════════════════
+   THE JOURNEY — The Passage of the Veil
+   The visual register of a member's passage into the Order.
+   Built upon the approved record language — thin rules,
+   diamond nodes, restrained gold, fine letter-spaced minor
+   text, generous negative space, and ceremonial restraint.
+
+   Three states carry the hierarchy, read at a glance:
+     · passed  — marks the Register has written (inscribed)
+     · sealed  — marks the Register has not yet entered (veiled)
+     · present — where the member now stands (the standing)
+   ════════════════════════════════════════════════════════ */
+
+/* ── The passage: a ceremonial axis, not a card list ── */
+
+.sc-journey-passage {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sc-record-section {
+  width: min(620px, 100%);
+}
+
+.sc-journey-stage {
+  position: relative;
+  padding: 0 0 54px 46px;
+  text-align: left;
+}
+
+/* The thread of the passage — a single restrained line
+   extending from node to node, brighter where it passes
+   through written ground. */
+
+.sc-journey-stage::before {
+  content: "";
+  position: absolute;
+  left: 8px;
+  top: 30px;
+  bottom: -8px;
+  width: 1px;
+  background: linear-gradient(180deg, rgba(193,168,104,0.3), rgba(193,168,104,0.04));
+}
+
+.sc-journey-stage:last-child::before {
+  display: none;
+}
+
+/* The node of each passage. A filled diamond marks what the
+   Register has written; a hollow diamond marks what remains
+   sealed; the bright diamond marks where the member stands. */
+
+.sc-journey-node {
+  position: absolute;
+  left: 4px;
+  top: 24px;
+  width: 9px;
+  height: 9px;
+  transform: rotate(45deg);
+  background: rgba(193,168,104,0.5);
+  box-shadow: 0 0 12px rgba(193,168,104,0.22);
+  transition: background 0.5s ease, box-shadow 0.5s ease;
+}
+
+/* ── The head of each passage ── */
+
+.sc-journey-stage-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 22px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(236,229,211,0.06);
+}
+
+.sc-journey-period {
+  flex: 0 0 auto;
+  font-family: var(--font-cormorant);
+  font-size: clamp(24px, 4.2vw, 30px);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: var(--sc-gold);
+  font-variant-numeric: tabular-nums;
+  transition: color 0.4s ease;
+}
+
+.sc-journey-title {
+  flex: 1 1 auto;
+  margin: 0;
+  text-align: right;
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--sc-soft);
+  line-height: 1.6;
+}
+
+.sc-journey-status {
+  display: block;
+  margin-top: 12px;
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--sc-muted);
+}
+
+.sc-journey-detail {
+  display: block;
+  margin-top: 10px;
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+  font-size: 8.5px;
+  font-weight: 400;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--sc-gold);
+  opacity: 0.8;
+}
+
+.sc-journey-description {
+  margin: 14px 0 0;
+  font-family: var(--font-cormorant);
+  font-size: clamp(14px, 2.4vw, 16px);
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  line-height: 1.75;
+  color: var(--sc-ivory);
+  opacity: 0.88;
+  transition: opacity 0.4s ease, color 0.4s ease;
+}
+
+.sc-journey-stage:hover .sc-journey-description,
+.sc-journey-stage:focus-within .sc-journey-description {
+  opacity: 1;
+}
+
+.sc-journey-stage:hover .sc-journey-period,
+.sc-journey-stage:focus-within .sc-journey-period {
+  color: var(--sc-gold-b);
+}
+
+/* ── Passages the Register has not yet entered (sealed) ── */
+
+.sc-journey-stage-veiled .sc-journey-node {
+  background: transparent;
+  border: 1px solid rgba(193,168,104,0.3);
+  box-shadow: none;
+}
+
+.sc-journey-stage-veiled .sc-journey-period {
+  padding-top: 6px;
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--sc-muted);
+}
+
+.sc-journey-stage-veiled .sc-journey-title {
+  color: var(--sc-faint);
+}
+
+.sc-journey-stage-veiled .sc-journey-status {
+  color: var(--sc-faint);
+}
+
+.sc-journey-stage-veiled .sc-journey-description {
+  opacity: 0.5;
+}
+
+.sc-journey-stage-veiled::before {
+  background: linear-gradient(180deg, rgba(193,168,104,0.13), rgba(193,168,104,0.03));
+}
+
+/* ── The present passage — the standing ──
+   Held beneath a sealed frame so the eye rests where the
+   member stands: the one passage charged with the light. */
+
+.sc-journey-stage-present {
+  margin-top: 10px;
+  padding: 30px 28px 34px 80px;
+  border: 1px solid rgba(193,168,104,0.2);
+  background:
+    radial-gradient(circle at 0% 0%, rgba(193,168,104,0.06), transparent 48%),
+    linear-gradient(180deg, rgba(19,17,13,0.74), rgba(9,8,6,0.5));
+}
+
+.sc-journey-stage-present::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  pointer-events: none;
+  background:
+    linear-gradient(rgba(193,168,104,0.55), rgba(193,168,104,0.55)) top left / 16px 1px,
+    linear-gradient(rgba(193,168,104,0.55), rgba(193,168,104,0.55)) top left / 1px 16px,
+    linear-gradient(rgba(193,168,104,0.55), rgba(193,168,104,0.55)) top right / 16px 1px,
+    linear-gradient(rgba(193,168,104,0.55), rgba(193,168,104,0.55)) top right / 1px 16px,
+    linear-gradient(rgba(193,168,104,0.55), rgba(193,168,104,0.55)) bottom left / 16px 1px,
+    linear-gradient(rgba(193,168,104,0.55), rgba(193,168,104,0.55)) bottom left / 1px 16px,
+    linear-gradient(rgba(193,168,104,0.55), rgba(193,168,104,0.55)) bottom right / 16px 1px,
+    linear-gradient(rgba(193,168,104,0.55), rgba(193,168,104,0.55)) bottom right / 1px 16px;
+  background-repeat: no-repeat;
+  opacity: 0.42;
+}
+
+.sc-journey-stage-present .sc-journey-node {
+  left: 10px;
+  top: 42px;
+  width: 11px;
+  height: 11px;
+  background: var(--sc-gold-b);
+  box-shadow: 0 0 22px rgba(232,217,168,0.4);
+}
+
+.sc-journey-stage-present .sc-journey-node::after {
+  content: "";
+  position: absolute;
+  inset: -5px;
+  border: 1px solid rgba(232,217,168,0.28);
+}
+
+.sc-journey-stage-present::before {
+  display: none;
+}
+
+.sc-journey-stage-present .sc-journey-stage-head {
+  border-bottom: 1px solid rgba(236,229,211,0.08);
+}
+
+.sc-journey-stage-present .sc-journey-period {
+  font-size: clamp(17px, 3.4vw, 22px);
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--sc-ivory);
+}
+
+.sc-journey-stage-present .sc-journey-title {
+  color: var(--sc-gold);
+}
+
+.sc-journey-stage-present .sc-journey-status {
+  position: relative;
+  margin-top: 18px;
+  padding-left: 30px;
+  color: var(--sc-gold-b);
+}
+
+.sc-journey-stage-present .sc-journey-status::before {
+  content: "";
+  position: absolute;
+  left: 12px;
+  top: 0.55em;
+  width: 9px;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(232,217,168,0.55), transparent);
+}
+
+.sc-journey-stage-present .sc-journey-description {
+  color: var(--sc-ivory);
+  opacity: 0.95;
+}
+
+.sc-journey-stage-present .sc-journey-detail {
+  opacity: 0.9;
+}
+
+/* ── What remains concealed beyond the standing ── */
+
+.sc-journey-beyond {
+  position: relative;
+  margin: 84px auto 0;
+  width: min(560px, 100%);
+  padding: 54px 24px;
+  text-align: center;
+  border-top: 1px solid rgba(193,168,104,0.14);
+  border-bottom: 1px solid rgba(193,168,104,0.14);
+  background:
+    radial-gradient(circle at 50% 44%, rgba(193,168,104,0.05), transparent 46%),
+    radial-gradient(circle at 50% 50%, rgba(0,0,0,0.5), transparent 74%),
+    linear-gradient(180deg, rgba(0,0,0,0.3), rgba(0,0,0,0.5));
+}
+
+.sc-journey-beyond::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -34px;
+  width: 1px;
+  height: 52px;
+  transform: translateX(-50%);
+  background: linear-gradient(180deg, rgba(193,168,104,0.3), transparent);
+}
+
+.sc-journey-beyond-emblem {
+  display: block;
+  width: 36px;
+  height: 36px;
+  margin: 0 auto 26px;
+  color: var(--sc-gold);
+  opacity: 0.2;
+}
+
+.sc-journey-beyond-title {
+  margin: 0;
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.42em;
+  text-indent: 0.42em;
+  text-transform: uppercase;
+  color: var(--sc-gold);
+}
+
+.sc-journey-beyond-rule {
+  width: 44px;
+  height: 1px;
+  margin: 22px auto 26px;
+  background: linear-gradient(90deg, transparent, rgba(193,168,104,0.36), transparent);
+}
+
+.sc-journey-beyond-text {
+  margin: 0;
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+  font-size: 9.5px;
+  font-weight: 400;
+  letter-spacing: 0.34em;
+  text-indent: 0.34em;
+  line-height: 2.4;
+  text-transform: uppercase;
+  color: var(--sc-gold);
+  opacity: 0.85;
+}
+
+/* ── Whose passage this is — the member named upon it ── */
+
+.sc-journey-member {
+  margin: 32px 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.sc-journey-member-name {
+  font-family: var(--font-cormorant);
+  font-size: clamp(15px, 3vw, 18px);
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-indent: 0.18em;
+  text-transform: uppercase;
+  color: var(--sc-ivory);
+}
+
+.sc-journey-member-rule {
+  width: 40px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(193,168,104,0.4), transparent);
+}
+
+.sc-journey-member-id {
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+  font-size: 8px;
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  text-indent: 0.3em;
+  text-transform: uppercase;
+  color: var(--sc-faint);
+}
+
+/* ── Responsive — the axis holds on a narrow page ── */
+
+@media (max-width: 640px) {
+  .sc-journey-stage {
+    padding-left: 34px;
+  }
+
+  .sc-journey-stage::before {
+    left: 6px;
+  }
+
+  .sc-journey-node {
+    left: 2px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sc-record-section {
+    width: 100%;
+  }
+
+  .sc-journey-stage {
+    padding-left: 26px;
+    padding-bottom: 46px;
+  }
+
+  .sc-journey-stage::before {
+    left: 4px;
+  }
+
+  .sc-journey-node {
+    left: 0;
+  }
+
+  .sc-journey-stage-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .sc-journey-title {
+    text-align: left;
+    font-size: 9px;
+    letter-spacing: 0.26em;
+  }
+
+  .sc-journey-stage-present {
+    padding: 24px 18px 30px 44px;
+  }
+
+  .sc-journey-stage-present .sc-journey-node {
+    left: 6px;
+    top: 40px;
+  }
+
+  .sc-journey-stage-present .sc-journey-status {
+    padding-left: 22px;
+  }
+
+  .sc-journey-stage-present .sc-journey-status::before {
+    left: 8px;
+  }
+
+  .sc-journey-beyond {
+    margin-top: 64px;
+    padding: 42px 20px;
+  }
+}

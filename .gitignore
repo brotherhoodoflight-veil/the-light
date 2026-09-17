@@ -5,8 +5,14 @@
 out/
 node_modules/
 *.db
+!prisma/prod.db
 *.sqlite
 *.sqlite3
 .DS_Store
 Thumbs.db
 .vscode/
+.vercel
+.env*
+
+.next-build/
+prisma/prod.db

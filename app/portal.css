@@ -2001,11 +2001,17 @@
 
 .sc-wordmark {
   margin: 14px 0 0;
-  font-size: clamp(56px, 14vw, 100px);
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 0 8px;
+  font-size: clamp(26px, 7vw, 44px);
   font-weight: 400;
-  letter-spacing: 0.18em;
-  text-indent: 0.18em;
-  line-height: 1;
+  letter-spacing: 0.06em;
+  text-indent: 0.06em;
+  line-height: 1.05;
+  white-space: nowrap;
+  text-align: center;
   background: linear-gradient(180deg, #f6efdb 0%, #e9dfbe 46%, #c6b27c 100%);
   -webkit-background-clip: text;
   background-clip: text;
@@ -4332,7 +4338,9 @@
   }
 
   .sc-wordmark {
-    font-size: clamp(50px, 16vw, 78px);
+    font-size: clamp(26px, 7vw, 44px);
+    letter-spacing: 0.06em;
+    text-indent: 0.06em;
   }
 
   .sc-panel {
@@ -4630,5 +4638,65 @@
 
   .thr-emblem-wrap {
     opacity: 0.72;
+  }
+}
+
+.sc-world {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: #020202;
+  overflow: hidden;
+}
+
+.sc-world::before,
+.sc-world::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 38%;
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(0,0,0,0.05),
+      rgba(0,0,0,0.20) 55%,
+      rgba(0,0,0,0.72)
+    ),
+    url("/images/sanctuary/temple.png");
+  background-size: cover;
+  background-position: center;
+  filter: saturate(0.7) contrast(1.15) brightness(0.58);
+  opacity: 0.9;
+}
+
+.sc-world::before {
+  left: 0;
+}
+
+.sc-world::after {
+  right: 0;
+  transform: scaleX(-1);
+}
+
+@media (max-width: 700px) {
+  .sc-world::before,
+  .sc-world::after {
+    width: 25%;
+    opacity: 0.5;
+  }
+}
+
+
+@media (max-width: 700px) {
+  .sc-world {
+    opacity: 0.45;
+  }
+
+  .sc-world::before,
+  .sc-world::after {
+    width: 18%;
+    opacity: 0.18;
   }
 }
