@@ -15,4 +15,3 @@ Thumbs.db
 .env*
 
 .next-build/
-prisma/prod.db
