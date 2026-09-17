@@ -6,7 +6,6 @@
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  distDir: '.next-build',
   experimental: {
     serverComponentsExternalPackages: [
       'better-sqlite3',
