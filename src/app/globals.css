@@ -1,26 +1,260 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background: #070709;
+  --color-foreground: #e8e6e3;
+  --color-void: #070709;
+  --color-card: #121214;
+  --color-gold: #d4af37;
+  --color-gold-dim: #8a6d2b;
+  --color-gold-soft: #f2d87d;
+  --color-parchment: #e8e6e3;
+  --color-mist: #9b978e;
+  --font-sans: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo,
+    monospace;
+  --font-serif: Georgia, "Times New Roman", Times, serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  color-scheme: dark;
+  scrollbar-color: #2a2a2e #0b0b0d;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-void);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+}
+
+::selection {
+  background: var(--color-gold);
+  color: var(--color-void);
+}
+
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+::-webkit-scrollbar-track {
+  background: #0b0b0d;
+}
+::-webkit-scrollbar-thumb {
+  background: #2a2a2e;
+  border-radius: 9999px;
+  border: 2px solid #0b0b0d;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold-dim);
+}
+
+@layer utilities {
+  .gold-gradient-text {
+    background-image: linear-gradient(
+      180deg,
+      #f2d87d 0%,
+      #d4af37 55%,
+      #8a6d2b 115%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .hairline {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--color-gold-dim),
+      transparent
+    );
+  }
+
+  .veil-vignette {
+    background:
+      radial-gradient(
+        120% 90% at 50% 0%,
+        rgba(212, 175, 55, 0.05),
+        transparent 55%
+      ),
+      radial-gradient(
+        90% 60% at 50% 100%,
+        rgba(138, 109, 43, 0.06),
+        transparent 60%
+      );
+  }
+
+  .field-input {
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid rgba(212, 175, 55, 0.22);
+    background: rgba(255, 255, 255, 0.02);
+    padding: 0.7rem 0.9rem;
+    font-size: 0.875rem;
+    letter-spacing: 0.04em;
+    color: var(--color-parchment);
+    outline: none;
+    transition:
+      border-color 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+  .field-input::placeholder {
+    color: rgba(155, 151, 142, 0.55);
+  }
+  .field-input:focus {
+    border-color: var(--color-gold);
+    box-shadow: 0 0 0 1px rgba(212, 175, 55, 0.25);
+  }
+  .field-input option {
+    background: var(--color-card);
+    color: var(--color-parchment);
+  }
+
+  .threshold-field {
+    width: 100%;
+    border: 0;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.18);
+    background: transparent;
+    padding: 0.85rem 0;
+    font-size: 0.8rem;
+    letter-spacing: 0.14em;
+    color: var(--color-parchment);
+    outline: none;
+    transition:
+      border-color 0.25s ease,
+      text-shadow 0.3s ease;
+  }
+  .threshold-field::placeholder {
+    color: rgba(138, 109, 43, 0.38);
+  }
+  .threshold-field:focus {
+    border-bottom-color: var(--color-gold);
+    text-shadow: 0 0 26px rgba(212, 175, 55, 0.32);
+  }
+
+  .sigil-spin {
+    animation: sigil-spin 120s linear infinite;
+    transform-origin: center;
+  }
+  @keyframes sigil-spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .ember-pulse {
+    animation: ember-pulse 3.2s ease-in-out infinite;
+  }
+  @keyframes ember-pulse {
+    0%,
+    100% {
+      opacity: 0.85;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.035);
+    }
+  }
+
+  .grain-overlay {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    animation: grain-jitter 0.7s steps(5) infinite;
+  }
+  @keyframes grain-jitter {
+    0% {
+      transform: translate(0, 0);
+    }
+    20% {
+      transform: translate(-3px, 2px);
+    }
+    40% {
+      transform: translate(2px, -3px);
+    }
+    60% {
+      transform: translate(-2px, -2px);
+    }
+    80% {
+      transform: translate(3px, 2px);
+    }
+    100% {
+      transform: translate(0, 0);
+    }
+  }
+
+  .threshold-scan {
+    animation: threshold-scan 8s linear infinite;
+  }
+  @keyframes threshold-scan {
+    0% {
+      top: -6%;
+    }
+    100% {
+      top: 106%;
+    }
+  }
+
+  .threshold-flicker {
+    animation: threshold-flicker 5.2s infinite;
+  }
+  @keyframes threshold-flicker {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    4% {
+      opacity: 0.35;
+    }
+    6% {
+      opacity: 1;
+    }
+    7% {
+      opacity: 0.7;
+    }
+    8% {
+      opacity: 1;
+    }
+    46% {
+      opacity: 1;
+    }
+    48% {
+      opacity: 0.5;
+    }
+    50% {
+      opacity: 1;
+    }
+    82% {
+      opacity: 1;
+    }
+    84% {
+      opacity: 0.25;
+    }
+    87% {
+      opacity: 1;
+    }
+  }
+
+  .threshold-shake {
+    animation: threshold-shake 0.45s ease-out;
+  }
+  @keyframes threshold-shake {
+    0%,
+    100% {
+      transform: translateX(0);
+    }
+    20% {
+      transform: translateX(-6px);
+    }
+    40% {
+      transform: translateX(6px);
+    }
+    60% {
+      transform: translateX(-4px);
+    }
+    80% {
+      transform: translateX(4px);
+    }
+  }
 }
