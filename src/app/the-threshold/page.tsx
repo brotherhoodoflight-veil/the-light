@@ -3,7 +3,7 @@
 import { useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import SealPentagram from "@/components/SealPentagram";
+import { SealEye } from "@/components/Seals";
 
 export default function ThresholdPage() {
   const router = useRouter();
@@ -55,7 +55,9 @@ export default function ThresholdPage() {
       </Link>
 
       <div className="relative z-30 flex flex-1 flex-col items-center px-6 pb-10 pt-[15vh] text-center">
-        <SealPentagram className="seal-gold mx-auto mb-6 h-[150px] w-[150px] md:h-[200px] md:w-[200px]" />
+        <div className="mb-6">
+          <SealEye />
+        </div>
         <h1 className="gold-gradient-text threshold-flicker mt-6 font-serif text-4xl font-bold tracking-[0.38em] sm:text-5xl">
           AT THE&nbsp;THRESHOLD
         </h1>

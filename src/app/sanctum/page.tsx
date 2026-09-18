@@ -1,3 +1,5 @@
+import { SealEye } from "@/components/Seals";
+
 export default function SanctumPage() {
   return (
     <main className="relative flex min-h-svh flex-col overflow-hidden bg-[#0A0612] text-[#E8E6E3]">
@@ -11,11 +13,9 @@ export default function SanctumPage() {
       </p>
 
       {/* Seal - golden sigil */}
-      <img
-        src="/seals/4-sigil.png"
-        alt=""
-        className="z-10 mx-auto my-10 h-[140px] w-[140px] opacity-80 drop-shadow-[0_0_18px_rgba(212,175,55,0.45)] transition-all duration-300 hover:drop-shadow-[0_0_34px_#D4AF37] md:h-[190px] md:w-[190px]"
-      />
+      <div className="z-10 my-10">
+        <SealEye />
+      </div>
 
       {/* Main Titles */}
       <h1 className="z-10 text-center font-serif tracking-[0.2em] text-sm text-[#D4AF37]">

@@ -32,11 +32,18 @@ export default async function PortalPage() {
 
       <main className="mx-auto flex w-full max-w-5xl flex-col gap-10 px-5 py-12">
         <header className="flex flex-col items-center gap-1 text-center">
-          <img
-            src="/seals/2-ouroboros.png"
-            alt=""
-            className="mx-auto mb-8 h-[150px] w-[150px] opacity-80 drop-shadow-[0_0_25px_rgba(0,229,255,0.6)] md:h-[200px] md:w-[200px]"
-          />
+          <svg
+            viewBox="0 0 100 100"
+            className="mx-auto mb-8 h-[160px] w-[160px] opacity-90 drop-shadow-[0_0_25px_rgba(0,229,255,0.6)] transition-all duration-[3000ms] hover:rotate-180 hover:drop-shadow-[0_0_40px_rgba(0,229,255,0.9)] md:h-[220px] md:w-[220px]"
+          >
+            <g stroke="#00E5FF" fill="none" strokeWidth="0.8" opacity="0.8">
+              <circle cx="50" cy="50" r="40" />
+              <path d="M82 30 a38 38 0 1 0 2 26" />
+              <circle cx="50" cy="12" r="5" fill="#00E5FF" />
+              <circle cx="44" cy="5" r="2" fill="#00E5FF" />
+              <circle cx="56" cy="5" r="2" fill="#00E5FF" />
+            </g>
+          </svg>
           <h1 className="font-serif text-3xl font-bold tracking-[0.35em] text-[#00E5FF] sm:text-4xl">
             THE PORTAL
           </h1>

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import SealPentagram from "@/components/SealPentagram";
+import { SealPentagram } from "@/components/Seals";
 
 export default function Home() {
   return (
@@ -15,7 +15,9 @@ export default function Home() {
       </p>
 
       {/* Seal - golden pentagram */}
-      <SealPentagram className="seal-gold z-10 mx-auto mb-8 h-[180px] w-[180px] md:h-[240px] md:w-[240px]" />
+      <div className="z-10 mb-8">
+        <SealPentagram />
+      </div>
 
       {/* Main Titles */}
       <h1 className="z-10 text-center font-serif tracking-[0.2em] text-[#D4AF37] text-sm">
