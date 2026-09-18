@@ -1,76 +1,69 @@
 import Link from "next/link";
-import { SealPentagram } from "@/components/Seals";
 
 export default function Home() {
   return (
-    <main className="relative flex min-h-svh flex-col overflow-hidden bg-[#050505] text-[#F5F0E8]">
-      {/* Grain overlay */}
+    <main className="relative flex min-h-svh flex-col overflow-hidden bg-[#040404] text-[#E7E3DC]">
+      {/* Hiss / grain */}
       <div
-        className="grain-overlay pointer-events-none fixed inset-0 z-50 opacity-[0.25] mix-blend-overlay"
-        aria-hidden="true"
-      />
-      {/* Slow breathing radial glow */}
-      <div
-        className="ember-pulse pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.10)_0%,transparent_70%)]"
+        className="pointer-events-none fixed inset-0 z-50 bg-[url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22140%22 height=%22140%22%3E%3Cfilter id=%22g%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.85%22 numOctaves=%222%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23g)%22 opacity=%220.55%22/%3E%3C/svg%3E')] opacity-[0.09] mix-blend-overlay"
         aria-hidden="true"
       />
 
-      <div className="relative z-30 flex flex-1 flex-col items-center justify-center px-6 pb-8 pt-[16vh] text-center">
-        <p className="text-[9px] font-semibold uppercase tracking-[0.6em] text-gold-dim/70">
-          HEADQUARTERS:&nbsp;UNITED&nbsp;STATES&nbsp;&nbsp;•&nbsp;&nbsp;EST.&nbsp;1863
+      {/* Corner codes */}
+      <p className="pointer-events-none absolute left-6 top-6 z-10 text-[8px] font-medium uppercase tracking-[0.5em] text-[#6b6b66]/60">
+        EST.&nbsp;1863&nbsp;&nbsp;•&nbsp;&nbsp;HQ:&nbsp;US
+      </p>
+      <p className="pointer-events-none absolute right-6 top-6 z-10 -rotate-90 origin-top-right text-[8px] font-medium uppercase tracking-[0.5em] text-[#6b6b66]/60">
+        STOP
+      </p>
+      <p className="pointer-events-none absolute bottom-6 left-6 z-10 whitespace-pre text-[8px] font-medium uppercase leading-[2.4] tracking-[0.5em] text-[#6b6b66]/60">
+        THE&nbsp;FLESH<br />ENDS&nbsp;HERE
+      </p>
+      <p className="pointer-events-none absolute bottom-6 right-6 z-10 text-[8px] font-medium uppercase tracking-[0.5em] text-[#6b6b66]/60">
+        147&nbsp;•&nbsp;SEALED
+      </p>
+
+      <div className="relative z-20 flex flex-1 flex-col items-center justify-center px-8 pb-32 pt-[14vh] text-center">
+        <p className="text-[9px] font-medium uppercase tracking-[0.55em] text-[#3d3d39]/90">
+          SILENCE.
         </p>
 
-        <div className="hairline mt-10 w-44" />
-
-        {/* Seal - golden pentagram (inline SVG, no black box) */}
-        <SealPentagram className="seal-gold mx-auto my-14 h-[180px] w-[180px] drop-shadow-[0_0_18px_rgba(212,175,55,0.5)] transition-all duration-300 hover:drop-shadow-[0_0_40px_#D4AF37] md:h-[240px] md:w-[240px]" />
-
-        <h1 className="mt-10 font-serif text-xs font-semibold uppercase tracking-[0.3em] text-gold-dim/80">
-          THE SACRED ORDER OF THE VEILED LIGHT
+        <h1 className="mt-9 font-serif text-[13vw] font-extralight leading-[0.95] tracking-[0.02em] text-[#E7E3DC]/90 sm:text-7xl">
+          YOU ARE
+          <br />
+          BEING
+          <br />
+          <span className="text-[#B8860B]">COUNTED.</span>
         </h1>
 
-        <h2 className="threshold-flicker mt-6 font-serif text-6xl font-extralight leading-[0.92] tracking-[0.16em] md:text-8xl">
-          BROTHERHOOD<br />
-          OF<br />
-          <span className="text-[#D4AF37]">LIGHT</span>
-        </h2>
+        <div className="mt-11 h-px w-32 bg-gradient-to-r from-transparent via-[#8a6d2b]/50 to-transparent" />
 
-        <p className="mt-8 text-[10px] font-light uppercase tracking-[0.5em] text-gold-dim/60">
-          LIGHT EXISTS BEHIND THE VEIL.
+        <p className="mt-11 max-w-[520px] text-[13px] font-light leading-8 tracking-wide text-[#b9b6ae]/85">
+          This frame is closed to the unregistered. That you are reading it
+          means you were already named. The Order does not make that kind of
+          mistake. Look at your own hand — it was not your choice that got it
+          here.
         </p>
 
-        <div className="hairline mt-10 w-52" />
-
-        <p className="mt-10 max-w-[520px] text-[13px] font-light leading-8 tracking-wide text-parchment/60">
-          The Order keeps no public register and receives no casual witness.
-          Its knowledge is held in confidence. Its authority is closed until
-          granted. Its membership is chosen, never requested. What sits beyond
-          this frame is not shown to the unmarked.
+        <p className="mt-9 text-[9px] font-semibold uppercase tracking-[0.45em] text-[#7a1f1b]/95">
+          THE ORDER DOES NOT RECEIVE VISITORS. IT KEEPS THEM.
         </p>
 
-        {/* Warning */}
-        <p className="mt-10 text-[9px] font-semibold uppercase tracking-[0.45em] text-[#8a2521]">
-          THE UNMARKED ARE NOT RECEIVED
-        </p>
-
-        {/* ENTER IF YOU DARE */}
         <Link
           href="/the-threshold"
           prefetch={false}
-          className="mt-14 border border-gold-dim/40 px-14 py-5 text-[11px] font-semibold uppercase tracking-[0.5em] text-gold transition-all duration-500 hover:border-gold hover:bg-gold hover:text-black hover:shadow-[0_0_42px_rgba(212,175,55,0.45)] focus:outline focus:outline-1 focus:outline-gold"
+          className="group relative mt-14 inline-block"
         >
-          ENTER IF YOU DARE
+          <span className="text-[11px] font-medium uppercase tracking-[0.5em] text-[#c9a227] transition-colors duration-500 group-hover:text-[#F5E9C8]">
+            ENTER IF YOU DARE
+          </span>
+          <span className="absolute -bottom-2 left-0 h-px w-full bg-[#c9a227]/50 transition-all duration-700 group-hover:w-0" />
+          <span className="absolute -bottom-2 left-0 h-px w-0 bg-[#7a1f1b] transition-all duration-700 group-hover:w-full" />
         </Link>
-        <p className="mt-4 text-[8px] font-semibold uppercase tracking-[0.4em] text-gold-dim/60">
-          THERE IS NO TURNING BACK AFTER THIS
-        </p>
 
-        {/* Footer stats */}
-        <footer className="mt-auto w-full max-w-md pt-24">
-          <p className="mx-auto text-center text-[8px] font-medium uppercase tracking-[0.4em] text-gold-dim/50">
-            WITNESS:&nbsp;147&nbsp;GH&nbsp;&nbsp;•&nbsp;&nbsp;5700&nbsp;GLOBAL&nbsp;&nbsp;•&nbsp;&nbsp;HQ:&nbsp;US
-          </p>
-        </footer>
+        <p className="mt-8 text-[8px] font-light uppercase tracking-[0.45em] text-[#6b6b66]/70">
+          THE DOOR YOU CAME IN WITH WILL NOT FIT THE ONE BEHIND IT.
+        </p>
       </div>
     </main>
   );
