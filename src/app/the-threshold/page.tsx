@@ -125,13 +125,12 @@ export default function ThresholdPage() {
           </p>
         </div>
 
-        <footer className="mt-6 w-full border-t border-gold-dim/15 pt-5 text-[9px] uppercase tracking-[0.4em] text-gold-dim/70">
-          <p className="mx-auto flex max-w-sm flex-wrap items-center justify-center gap-x-4 gap-y-2">
-            <span>WITNESS:&nbsp;147&nbsp;GH</span>
-            <span className="h-3 w-px bg-gold-dim/30" aria-hidden="true" />
-            <span>5700&nbsp;GLOBAL</span>
-            <span className="h-3 w-px bg-gold-dim/30" aria-hidden="true" />
-            <span>HQ:&nbsp;US</span>
+        <footer className="mt-16 w-full border-t border-[#D4AF37]/10 pt-8 text-center">
+          <p className="mx-auto font-mono text-[9px] uppercase tracking-[0.3em] text-[#D4AF37]/40 md:text-[10px]">
+            THIS PRECINCT IS RESERVED FOR MEMBERS OF THE ORDER.
+          </p>
+          <p className="mx-auto font-mono text-[9px] uppercase tracking-[0.3em] text-[#D4AF37]/40 md:text-[10px]">
+            UNAUTHORIZED ACCESS IS NOT PERMITTED.
           </p>
         </footer>
       </div>
