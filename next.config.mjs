@@ -10,11 +10,12 @@ const nextConfig = {
     serverComponentsExternalPackages: [
       'better-sqlite3',
       '@prisma/adapter-better-sqlite3',
+      'argon2',
     ],
     outputFileTracingIncludes: {
-      '/api/**/*': ['./prisma/prod.db'],
-      '/sanctuary/**/*': ['./prisma/prod.db'],
-      '/grand-chamber/**/*': ['./prisma/prod.db'],
+      '/api/**/*': ['./prisma/prod.db', './node_modules/argon2/prebuilds/**/*.node'],
+      '/sanctuary/**/*': ['./prisma/prod.db', './node_modules/argon2/prebuilds/**/*.node'],
+      '/grand-chamber/**/*': ['./prisma/prod.db', './node_modules/argon2/prebuilds/**/*.node'],
     },
   },
 };

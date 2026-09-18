@@ -62,3 +62,36 @@ export function formatDayLabel(iso: string): string {
 export function firstWord(name: string): string {
   return name.trim().split(/\s+/)[0] ?? name;
 }
+
+/** Relative time for notice records: "JUST NOW", "X MIN AGO", "X HR AGO". */
+export function formatAgo(iso: string): string {
+  const date = new Date(iso);
+  const diffMs = Date.now() - date.getTime();
+  const minutes = Math.floor(diffMs / 60000);
+  if (minutes < 1) return 'JUST NOW';
+  if (minutes < 60) return `${minutes} MIN AGO`;
+  const hours = Math.floor(minutes / 60);
+  if (hours < 24) return `${hours} HR AGO`;
+  const now = new Date();
+  const sameDay = date.toDateString() === now.toDateString();
+  const yesterday = new Date(now);
+  yesterday.setDate(now.getDate() - 1);
+  if (date.toDateString() === yesterday.toDateString()) return 'YESTERDAY';
+  return date
+    .toLocaleDateString(undefined, { day: 'numeric', month: 'short' })
+    .toUpperCase();
+}
+
+/** The member identity handed from the server page to the chamber. */
+export interface ChamberMemberInfo {
+  memberId: string;
+  fullName: string;
+  initials: string;
+  /** Official membership photograph; only present when one exists. */
+  photoUrl?: string;
+  role?: string;
+  status?: string;
+  country?: string;
+  membershipType?: string;
+  countryInitiator?: string;
+}
