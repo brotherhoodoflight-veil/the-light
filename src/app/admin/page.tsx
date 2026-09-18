@@ -24,7 +24,7 @@ export default async function AdminPage() {
   const members = (await listMembers()).map(publicMember);
 
   return (
-    <div className="veil-vignette min-h-svh">
+    <div className="min-h-svh bg-[#0A0612]">
       <Navbar circle={session.circle} memberId={session.id} />
 
       <main className="mx-auto flex w-full max-w-6xl flex-col gap-10 px-5 py-12">
@@ -39,7 +39,7 @@ export default async function AdminPage() {
         </header>
 
         <section className="grid grid-cols-2 gap-6">
-          <div className="rounded-sm border border-gold-dim/25 bg-card p-5 text-center">
+          <div className="border border-gold-dim/25 bg-card p-5 text-center">
             <p className="font-serif text-3xl tracking-[0.08em] text-gold">
               {members.length}
             </p>
@@ -47,7 +47,7 @@ export default async function AdminPage() {
               Initiated souls
             </p>
           </div>
-          <div className="rounded-sm border border-gold-dim/25 bg-card p-5 text-center">
+          <div className="border border-gold-dim/25 bg-card p-5 text-center">
             <p className="font-serif text-3xl tracking-[0.08em] text-gold">
               {REGIONS.length}
             </p>

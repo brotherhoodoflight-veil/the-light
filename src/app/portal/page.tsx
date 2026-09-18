@@ -27,7 +27,7 @@ export default async function PortalPage() {
   });
 
   return (
-    <div className="veil-vignette min-h-svh">
+    <div className="min-h-svh bg-[#0B0F19]">
       <Navbar circle={member.circle} memberId={member.id} />
 
       <main className="mx-auto flex w-full max-w-5xl flex-col gap-10 px-5 py-12">
@@ -42,18 +42,18 @@ export default async function PortalPage() {
         </header>
 
         <section className="grid gap-6 md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
-          <div className="flex flex-col items-center gap-5 rounded-sm border border-gold-dim/25 bg-card p-8">
+          <div className="flex flex-col items-center gap-5 border border-gold-dim/25 bg-card p-8">
             <MemberSigil
               seed={member.sigil}
               size={180}
-              className="ember-pulse text-gold drop-shadow-[0_0_30px_rgba(212,175,55,0.25)]"
+              className="ember-pulse text-gold"
             />
             <p className="font-mono text-sm tracking-[0.3em] text-gold">
               {member.id}
             </p>
           </div>
 
-          <div className="rounded-sm border border-gold-dim/25 bg-card p-8">
+          <div className="border border-gold-dim/25 bg-card p-8">
             <dl className="flex flex-col gap-7">
               <div>
                 <dt className="text-[0.62rem] font-semibold uppercase tracking-[0.32em] text-gold-dim">
@@ -108,7 +108,7 @@ export default async function PortalPage() {
           </div>
         </section>
 
-        <section className="rounded-sm border border-gold-dim/25 bg-card p-8">
+        <section className="border border-gold-dim/25 bg-card p-8">
           <header className="flex items-center gap-4">
             <span className="hairline flex-1" />
             <p className="text-[0.62rem] font-semibold uppercase tracking-[0.4em] text-gold">

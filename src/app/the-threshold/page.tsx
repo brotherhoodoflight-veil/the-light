@@ -3,6 +3,7 @@
 import { useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import SealPentagram from "@/components/SealPentagram";
 
 export default function ThresholdPage() {
   const router = useRouter();
@@ -24,13 +25,13 @@ export default function ThresholdPage() {
   }
 
   return (
-    <main className="relative flex min-h-svh flex-col overflow-hidden bg-[#020203] text-[#E8E6E3]">
+    <main className="relative flex min-h-svh flex-col overflow-hidden bg-[#050505] text-[#F5F5F5]">
       <div
         className="grain-overlay pointer-events-none fixed inset-0 z-50 opacity-[0.3] mix-blend-overlay"
         aria-hidden="true"
       />
       <div
-        className="threshold-scan pointer-events-none fixed left-0 top-0 z-40 h-px w-full bg-gradient-to-r from-transparent via-gold/50 to-transparent"
+        className="threshold-scan pointer-events-none fixed left-0 top-0 z-40 h-px w-full bg-gold/50"
         aria-hidden="true"
       />
       <div
@@ -54,12 +55,8 @@ export default function ThresholdPage() {
       </Link>
 
       <div className="relative z-30 flex flex-1 flex-col items-center px-6 pb-10 pt-[15vh] text-center">
-        <img
-          src="/seals/3-eye.png"
-          alt=""
-          className="mx-auto mb-6 h-[60px] w-[60px] opacity-70 transition-all duration-300 hover:drop-shadow-[0_0_12px_#D4AF37]"
-        />
-        <h1 className="gold-gradient-text threshold-flicker mt-8 font-serif text-4xl font-bold tracking-[0.38em] sm:text-5xl">
+        <SealPentagram className="seal-gold mx-auto mb-6 h-[150px] w-[150px] md:h-[200px] md:w-[200px]" />
+        <h1 className="gold-gradient-text threshold-flicker mt-6 font-serif text-4xl font-bold tracking-[0.38em] sm:text-5xl">
           AT THE&nbsp;THRESHOLD
         </h1>
         <p className="mt-5 text-[10px] font-semibold uppercase tracking-[0.42em] leading-relaxed text-gold-dim sm:text-[11px]">
@@ -110,7 +107,7 @@ export default function ThresholdPage() {
 
           <button
             type="submit"
-            className="mt-2 border border-gold-dim/40 bg-transparent py-5 text-[11px] font-semibold uppercase tracking-[0.45em] text-gold transition-all duration-300 hover:border-gold hover:bg-gold hover:text-black hover:shadow-[0_0_38px_rgba(212,175,55,0.45)] focus:outline focus:outline-1 focus:outline-gold"
+            className="mt-2 border border-gold-dim/40 bg-transparent py-5 text-[11px] font-semibold uppercase tracking-[0.45em] text-gold shadow-[0_0_20px_rgba(212,175,55,0.2)] transition-none hover:border-[#8B0000] hover:bg-[#8B0000] hover:text-[#F5F5F5] focus:outline focus:outline-1 focus:outline-gold"
           >
             SEVER THE VEIL&nbsp;&nbsp;&nbsp;✕&nbsp;&nbsp;&nbsp;CROSS
           </button>
@@ -125,11 +122,11 @@ export default function ThresholdPage() {
           </p>
         </div>
 
-        <footer className="mt-16 w-full border-t border-[#D4AF37]/10 pt-8 text-center">
-          <p className="mx-auto font-mono text-[9px] uppercase tracking-[0.3em] text-[#D4AF37]/40 md:text-[10px]">
+        <footer className="mt-16 w-full border-t border-[#8B0000]/20 pt-8 text-center">
+          <p className="mx-auto text-[9px] uppercase tracking-[0.4em] text-[#D4AF37]/30">
             THIS PRECINCT IS RESERVED FOR MEMBERS OF THE ORDER.
           </p>
-          <p className="mx-auto font-mono text-[9px] uppercase tracking-[0.3em] text-[#D4AF37]/40 md:text-[10px]">
+          <p className="mx-auto text-[9px] uppercase tracking-[0.4em] text-[#D4AF37]/30">
             UNAUTHORIZED ACCESS IS NOT PERMITTED.
           </p>
         </footer>

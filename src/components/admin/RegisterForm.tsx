@@ -69,7 +69,7 @@ export function RegisterForm() {
   }
 
   return (
-    <section className="rounded-sm border border-gold-dim/25 bg-card p-6 sm:p-7">
+    <section className="border border-gold-dim/25 bg-card p-6 sm:p-7">
       <header className="flex flex-col gap-1">
         <h2 className="font-serif text-xl font-semibold tracking-[0.2em] text-gold">
           Register an Initiate

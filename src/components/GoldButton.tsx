@@ -2,13 +2,13 @@ import Link from "next/link";
 import type { ComponentPropsWithoutRef } from "react";
 
 const BASE =
-  "inline-flex items-center justify-center gap-2 rounded-sm px-6 py-3 text-xs font-semibold uppercase tracking-[0.22em] transition-all duration-300 disabled:cursor-not-allowed disabled:opacity-40";
+  "inline-flex items-center justify-center gap-2 px-6 py-3 text-xs font-semibold uppercase tracking-[0.22em] transition-none disabled:cursor-not-allowed disabled:opacity-40";
 
 const VARIANTS: Record<"solid" | "outline", string> = {
   solid:
-    "bg-gold text-void shadow-[0_0_20px_rgba(212,175,55,0.25)] hover:bg-gold-soft hover:shadow-[0_0_28px_rgba(242,216,125,0.4)]",
+    "bg-gold text-void shadow-[0_0_20px_rgba(212,175,55,0.2)] hover:bg-[#8B0000] hover:text-white",
   outline:
-    "border border-gold-dim/70 text-gold hover:border-gold hover:bg-gold/5 hover:text-gold-soft",
+    "border border-gold-dim/70 text-gold hover:border-[#8B0000] hover:bg-[#8B0000] hover:text-white",
 };
 
 type GoldButtonProps = {

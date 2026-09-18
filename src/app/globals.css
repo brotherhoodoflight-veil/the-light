@@ -1,36 +1,57 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-background: #070709;
-  --color-foreground: #e8e6e3;
-  --color-void: #070709;
-  --color-card: #121214;
+  --color-background: #050505;
+  --color-foreground: #f5f5f5;
+  --color-void: #050505;
+  --color-card: #1e293b;
   --color-gold: #d4af37;
-  --color-gold-dim: #8a6d2b;
-  --color-gold-soft: #f2d87d;
-  --color-parchment: #e8e6e3;
-  --color-mist: #9b978e;
+  --color-gold-dim: #cd7f32;
+  --color-gold-soft: #e2e8f0;
+  --color-parchment: #f5f5f5;
+  --color-mist: #94a3b8;
   --font-sans: var(--font-geist-sans), Arial, Helvetica, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo,
     monospace;
   --font-serif: Georgia, "Times New Roman", Times, serif;
 }
 
+:root {
+  /* THE SOVEREIGN ELITE - Homepage, Threshold, Outer Veil */
+  --void-black: #050505;
+  --crimson-alert: #8b0000;
+  --metallic-gold: #d4af37;
+  --off-white: #f5f5f5;
+
+  /* THE TECHNOCRATIC SHADOW - Portal, Member Dashboard */
+  --obsidian-navy: #0b0f19;
+  --slate-gray: #1e293b;
+  --electric-cyan: #00e5ff;
+  --silver-gray: #94a3b8;
+
+  /* THE ANCIENT TYRANNY - Sanctum, Decimum, Admin */
+  --purple-black: #0a0612;
+  --tyrian-purple: #4a0e4e;
+  --raw-bronze: #cd7f32;
+  --slate-white: #e2e8f0;
+}
+
 html {
   color-scheme: dark;
-  scrollbar-color: #2a2a2e #0b0b0d;
+  scrollbar-color: #1e293b #050505;
 }
 
 body {
-  background: var(--color-void);
-  color: var(--color-foreground);
-  font-family: var(--font-sans);
+  background: var(--void-black) !important;
+  color: var(--off-white);
+  font-family: "Geist Mono", "JetBrains Mono", monospace;
+  letter-spacing: 0.05em;
   min-height: 100vh;
 }
 
 ::selection {
-  background: var(--color-gold);
-  color: var(--color-void);
+  background: var(--metallic-gold);
+  color: var(--void-black);
 }
 
 ::-webkit-scrollbar {
@@ -38,78 +59,68 @@ body {
   height: 9px;
 }
 ::-webkit-scrollbar-track {
-  background: #0b0b0d;
+  background: #050505;
 }
 ::-webkit-scrollbar-thumb {
-  background: #2a2a2e;
-  border-radius: 9999px;
-  border: 2px solid #0b0b0d;
+  background: #1e293b;
+  border: 2px solid #050505;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-gold-dim);
+  background: var(--raw-bronze);
 }
 
 @layer utilities {
+  /* DANGEROUS UI RULES
+     1. Vast Negative Space: all sections py-24 md:py-40, max-w-4xl mx-auto, huge black gaps
+     2. Abrupt Hover: NO transition-all duration-300. Instant snap:
+        hover:bg-[#8B0000] hover:text-[#F5F5F5] transition-none.
+        Buttons snap from black to crimson or gold instantly.
+     3. Monolithic Typography: headings font-serif or font-black tracking-[0.4em]
+        uppercase, carved look. No rounded, no soft. */
+
+  /* Page palettes
+     - / and /threshold: bg #050505 text #F5F5F5, buttons border/metallic #D4AF37,
+       hover instant to crimson #8B0000, seals in #D4AF37.
+     - /portal: bg #0B0F19, cards #1E293B border #00E5FF/20, interactive #00E5FF,
+       hover bg #00E5FF text-black snap, text #94A3B8.
+     - /sanctum /admin /decimum: bg #0A0612, secondary #4A0E4E, accents #CD7F32
+       border #CD7F32, text #E2E8F0. */
+
   .gold-gradient-text {
-    background-image: linear-gradient(
-      180deg,
-      #f2d87d 0%,
-      #d4af37 55%,
-      #8a6d2b 115%
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    color: var(--metallic-gold);
+    text-shadow: 0 2px 0 rgba(0, 0, 0, 0.8);
   }
 
   .hairline {
     height: 1px;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      var(--color-gold-dim),
-      transparent
-    );
+    background-color: rgba(212, 175, 55, 0.25);
   }
 
   .veil-vignette {
-    background:
-      radial-gradient(
-        120% 90% at 50% 0%,
-        rgba(212, 175, 55, 0.05),
-        transparent 55%
-      ),
-      radial-gradient(
-        90% 60% at 50% 100%,
-        rgba(138, 109, 43, 0.06),
-        transparent 60%
-      );
+    background: transparent;
   }
 
   .field-input {
     width: 100%;
-    border-radius: 4px;
     border: 1px solid rgba(212, 175, 55, 0.22);
     background: rgba(255, 255, 255, 0.02);
     padding: 0.7rem 0.9rem;
     font-size: 0.875rem;
     letter-spacing: 0.04em;
-    color: var(--color-parchment);
+    color: var(--off-white);
     outline: none;
-    transition:
-      border-color 0.2s ease,
-      box-shadow 0.2s ease;
+    transition: none;
   }
   .field-input::placeholder {
-    color: rgba(155, 151, 142, 0.55);
+    color: rgba(148, 163, 184, 0.55);
   }
   .field-input:focus {
-    border-color: var(--color-gold);
-    box-shadow: 0 0 0 1px rgba(212, 175, 55, 0.25);
+    border-color: var(--metallic-gold);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
   }
   .field-input option {
-    background: var(--color-card);
-    color: var(--color-parchment);
+    background: var(--card);
+    color: var(--off-white);
   }
 
   .threshold-field {
@@ -120,18 +131,16 @@ body {
     padding: 0.85rem 0;
     font-size: 0.8rem;
     letter-spacing: 0.14em;
-    color: var(--color-parchment);
+    color: var(--off-white);
     outline: none;
-    transition:
-      border-color 0.25s ease,
-      text-shadow 0.3s ease;
+    transition: none;
   }
   .threshold-field::placeholder {
-    color: rgba(138, 109, 43, 0.38);
+    color: rgba(205, 127, 50, 0.38);
   }
   .threshold-field:focus {
-    border-bottom-color: var(--color-gold);
-    text-shadow: 0 0 26px rgba(212, 175, 55, 0.32);
+    border-bottom-color: var(--metallic-gold);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
   }
 
   .sigil-spin {
@@ -157,6 +166,11 @@ body {
       opacity: 1;
       transform: scale(1.035);
     }
+  }
+
+  .seal-gold {
+    mix-blend-mode: screen;
+    filter: brightness(1.25);
   }
 
   .grain-overlay {

@@ -79,7 +79,7 @@ export function MemberTable({ members, currentId }: MemberTableProps) {
         </p>
       )}
 
-      <div className="overflow-x-auto rounded-sm border border-gold-dim/25">
+      <div className="overflow-x-auto border border-gold-dim/25">
         <table className="w-full min-w-[720px] border-collapse text-left">
           <thead>
             <tr className="border-b border-gold-dim/25 text-[0.6rem] uppercase tracking-[0.26em] text-gold-dim">
